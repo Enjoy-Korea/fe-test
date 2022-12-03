@@ -1,16 +1,33 @@
 import House from "@model/House";
+import Link from "next/link";
 import styled from "styled-components";
 
 const HouseItem = ({ item }: { item: House }) => {
     return (
         <Card>
-            <Container>
-                <Img src={item.images[0].url} />
-                <Content>
-                    <Title>{item.name}</Title>
-                    <Text>{item.description}</Text>
-                </Content>
-            </Container>
+            <Link href={`/house/${item.id}`}>
+                <Container>
+                    <Img src={item.images[0].url} />
+                    <Content>
+                        <Title>{item.name}</Title>
+
+                        <ContentWrap>
+                            <SubTitle>타입</SubTitle>
+                            <Text>{item.houseType}</Text>
+                        </ContentWrap>
+
+                        <ContentWrap>
+                            <SubTitle>학교</SubTitle>
+                            <Text>{item.university}</Text>
+                        </ContentWrap>
+
+                        <ContentWrap>
+                            <SubTitle>설명</SubTitle>
+                            <Text>{item.description}</Text>
+                        </ContentWrap>
+                    </Content>
+                </Container>
+            </Link>
         </Card>
     );
 };
@@ -23,6 +40,10 @@ const Card = styled.div`
     border: 1px solid #d1d1d1;
     box-sizing: border-box;
     margin-bottom: 30px;
+    a {
+        text-decoration: none;
+        color: #111;
+    }
 `;
 
 const Container = styled.div`
@@ -49,13 +70,23 @@ const Content = styled.div`
 `;
 
 const Title = styled.h3`
-    margin: 20px 0 0 0;
+    margin: 0;
+`;
+
+const SubTitle = styled.h5`
+    margin: 1px 0 0 0;
+    width: 5%;
+`;
+
+const ContentWrap = styled.div`
+    display: flex;
+    align-items: start;
 `;
 
 const Text = styled.p`
     margin: 0;
     font-size: 15px;
-    /* font-weight: 700; */
+    width: 93%;
     line-height: 20px;
     overflow: hidden;
     text-overflow: ellipsis;

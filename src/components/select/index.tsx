@@ -3,14 +3,19 @@ import styled from "styled-components";
 const SelectComponent = ({
     options,
     onChange,
+    defaultNone,
 }: {
     options: { label: string; value: string }[];
-    onChange: (value : string) => void;
+    onChange: (value: string) => void;
+    defaultNone?: boolean;
 }) => {
+    const defaultOption = { label: "선택", value: "" };
+    const optionList = defaultNone ? options : [defaultOption, ...options];
+
     return (
         <div>
-            <Select onChange={(e) => onChange(e.target.value)}>
-                {options.map((item) => (
+            <Select defaultValue={""} onChange={(e) => onChange(e.target.value)}>
+                {optionList.map((item) => (
                     <option value={item.value} onClick={(e) => console.log(e)}>
                         {item.label}
                     </option>
@@ -23,7 +28,7 @@ const SelectComponent = ({
 export default SelectComponent;
 
 const Select = styled.select`
-    width: 100%;
+    min-width: 100px;
     height: 35px;
     background: white;
     color: gray;
@@ -31,13 +36,4 @@ const Select = styled.select`
     font-size: 14px;
     border: none;
     margin-left: 10px;
-
-    option {
-        color: black;
-        background: white;
-        /* display: flex; */
-        white-space: pre;
-        min-height: 20px;
-        padding: 0px 2px 1px;
-    }
 `;
