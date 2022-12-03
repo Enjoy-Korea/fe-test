@@ -10,7 +10,10 @@
     "paths": {
         "@components/*": ["src/components/*"],
         "@pages/*": ["src/pages/*"],
-        "@views/*": ["src/views/*"]
+        "@views/*": ["src/views/*"],
+        "@network/*": ["src/network/*"],
+        "@data/*": ["src/data/*"],
+        "@model/*": ["src/model/*"]
     },
     "allowJs": true,
     "skipLibCheck": true,
@@ -25,7 +28,9 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "preserve",
-    "incremental": true
+    "incremental": true,
+    "strictPropertyInitialization": false
+
   },
   "include": [
     "src"
