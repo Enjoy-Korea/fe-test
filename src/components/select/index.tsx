@@ -9,14 +9,12 @@ const SelectComponent = ({
     onChange: (value: string) => void;
     defaultNone?: boolean;
 }) => {
-    const defaultOption = { label: "선택", value: "" };
-    const optionList = defaultNone ? options : [defaultOption, ...options];
-
     return (
         <div>
             <Select defaultValue={""} onChange={(e) => onChange(e.target.value)}>
-                {optionList.map((item) => (
-                    <option value={item.value} onClick={(e) => console.log(e)}>
+                {!defaultNone && <option value="">선택</option>}
+                {options.map((item, index) => (
+                    <option key={index} value={item.value} onClick={(e) => console.log(e)}>
                         {item.label}
                     </option>
                 ))}

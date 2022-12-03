@@ -7,7 +7,13 @@ const HouseItem = ({ item }: { item: House }) => {
         <Card>
             <Link href={`/house/${item.id}`}>
                 <Container>
-                    <Img src={item.images[0].url} />
+                    <Img
+                        src={item.images[0].url}
+                        onError={(event: any) => {
+                            event.target.src = "https://e2states.com/wp-content/plugins/nimble-builder/assets/img/default-img.png";
+                            event.onerror = null;
+                        }}
+                    />
                     <Content>
                         <Title>{item.name}</Title>
 
@@ -61,7 +67,7 @@ const Img = styled.img`
 `;
 
 const Content = styled.div`
-    padding: 3px;
+    padding: 10px;
     box-sizing: border-box;
     display: flex;
     gap: 10px;
@@ -75,7 +81,7 @@ const Title = styled.h3`
 
 const SubTitle = styled.h5`
     margin: 1px 0 0 0;
-    width: 5%;
+    width: 10%;
 `;
 
 const ContentWrap = styled.div`
@@ -86,7 +92,7 @@ const ContentWrap = styled.div`
 const Text = styled.p`
     margin: 0;
     font-size: 15px;
-    width: 93%;
+    width: 90%;
     line-height: 20px;
     overflow: hidden;
     text-overflow: ellipsis;
