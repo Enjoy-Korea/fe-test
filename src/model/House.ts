@@ -1,11 +1,11 @@
 class House {
-    id: string;
+    id: number;
     name: string;
     description: string;
     address: string;
     university: string;
     houseType: string;
-    image: { url: string; key: number }[];
+    images: { url: string; key: number }[];
 
     static create(data: House) {
         const house = new House();
@@ -15,7 +15,7 @@ class House {
         house.address = data.address;
         house.university = data.university;
         house.houseType = data.houseType;
-        house.image = data.image;
+        house.images = data.images;
         return house;
     }
 }

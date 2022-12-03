@@ -1,11 +1,7 @@
-import MainListView from "@views/MainListView";
+import MainListView from '@views/MainListView'
 
 const MainListPage = () => {
-    return (
-        <>
-            <MainListView />
-        </>
-    );
-};
+  return <><MainListView/></>
+}
 
-export default MainListPage;
+export default MainListPage
