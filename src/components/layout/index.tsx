@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 import styled from "styled-components";
-import NavigationBar from '@components/layout/NavigationBar';
+import NavigationBar from "@components/layout/NavigationBar";
 
 type LayoutProps = {
     children: ReactNode;

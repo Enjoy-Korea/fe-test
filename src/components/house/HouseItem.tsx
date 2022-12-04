@@ -10,7 +10,8 @@ const HouseItem = ({ item }: { item: House }) => {
                     <Img
                         src={item.images[0].url}
                         onError={(event: any) => {
-                            event.target.src = "https://e2states.com/wp-content/plugins/nimble-builder/assets/img/default-img.png";
+                            event.target.src =
+                                "https://e2states.com/wp-content/plugins/nimble-builder/assets/img/default-img.png";
                             event.onerror = null;
                         }}
                     />

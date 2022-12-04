@@ -5,7 +5,7 @@ const NavigationBar = () => {
     return (
         <Container>
             <Navigation>
-                <Link href="/main-list">
+                <Link href="/house-list">
                     <Logo src="https://logo-image-bucket.s3.ap-northeast-2.amazonaws.com/enkorwithus.svg" />
                 </Link>
             </Navigation>

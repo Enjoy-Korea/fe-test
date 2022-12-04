@@ -25,7 +25,9 @@
     "build": "next build",
     "dev": "next dev",
     "test": "next test",
-    "eject": "next eject"
+    "eject": "next eject",
+    "prettier": "prettier . --write --ignore-path .prettierignore"
+
   },
   "eslintConfig": {
     "extends": [

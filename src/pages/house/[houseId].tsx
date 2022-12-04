@@ -4,4 +4,4 @@ const HouseDetailPage = () => {
     return <HouseDetailView />;
 };
 
-export default HouseDetailPage
+export default HouseDetailPage;

@@ -1,5 +1,4 @@
 import House from "@model/House";
-import Link from "next/link";
 import styled from "styled-components";
 
 const HouseDetail = ({ item }: { item: House }) => {
@@ -78,8 +77,11 @@ const Content = styled.div`
     justify-content: center;
 `;
 
-const Title = styled.h3`
-    margin: 0;
+const Title = styled.h1`
+    padding: 20px;
+    color: #fff;
+    font-size: 30px;
+    background-color: rgb(255, 217, 81);
 `;
 
 const SubTitle = styled.h5`
