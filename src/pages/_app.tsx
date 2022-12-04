@@ -5,18 +5,7 @@ import Layout from "@components/layout";
 
 export default function App({ Component, pageProps }: AppProps) {
     const [showChild, setShowChild] = useState(false);
-    const [queryClient] = useState(
-        () =>
-            new QueryClient({
-                defaultOptions: {
-                    queries: {
-                        staleTime: 0,
-                        refetchOnWindowFocus: false,
-                        retry: 1,
-                    },
-                },
-            })
-    );
+    const [queryClient] = useState(() => new QueryClient());
 
     useEffect(() => {
         setShowChild(true);

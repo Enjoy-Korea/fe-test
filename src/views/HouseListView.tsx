@@ -1,18 +1,12 @@
+import { useEffect, useState } from "react";
+import styled from "styled-components";
 import HouseList from "@components/house/HouseList";
 import SelectComponent from "@components/select";
 import House from "@model/House";
 import { useGetHouseListQuery } from "@network/queries";
-import { useEffect, useState } from "react";
-import styled from "styled-components";
+import { CATEGORY, sortOptionType, OptionsType, typeOptions } from "@constants/index";
 
-type OptionsType = { label: string; value: string };
-
-type sortOptionType = {
-    type: string;
-    options: OptionsType[];
-};
-
-const MainListView = () => {
+const HouseListView = () => {
     const { isLoading, data: houseListQueryResult } = useGetHouseListQuery();
 
     const [list, setList] = useState<House[] | undefined>(houseListQueryResult || []);
@@ -24,7 +18,7 @@ const MainListView = () => {
     const universityOptions =
         houseListQueryResult?.map((house) => ({ label: house.university, value: house.university })) || [];
 
-    const filterDeduplication = (list: OptionsType[]) => {
+    const filterDeduplicationOptions = (list: OptionsType[]) => {
         const DeduplicationOptions = list.reduce((acc: OptionsType[], current) => {
             if (acc.findIndex(({ label }) => label === current.label) === -1) {
                 acc.push(current);
@@ -37,8 +31,7 @@ const MainListView = () => {
         if (type === CATEGORY.ALL) setSortOption({ type: type, options: [] });
         if (type === CATEGORY.HOUSE_TYPE) setSortOption({ type: type, options: houseTypeOptions });
         if (type === CATEGORY.UNIVERSITY) setSortOption({ type: type, options: universityOptions });
-
-        setList(houseListQueryResult)
+        setList(houseListQueryResult);
     };
 
     const filterList = (detailType: string) => {
@@ -62,7 +55,10 @@ const MainListView = () => {
                 {sortOption.type !== CATEGORY.ALL ? (
                     <SelectContainer>
                         <SelectTitle>옵션</SelectTitle>
-                        <SelectComponent options={filterDeduplication(sortOption.options)} onChange={filterList} />
+                        <SelectComponent
+                            options={filterDeduplicationOptions(sortOption.options)}
+                            onChange={filterList}
+                        />
                     </SelectContainer>
                 ) : null}
             </SortContainer>
@@ -72,19 +68,7 @@ const MainListView = () => {
     );
 };
 
-export default MainListView;
-
-export const CATEGORY = {
-    ALL: "all",
-    HOUSE_TYPE: "houseType",
-    UNIVERSITY: "university",
-};
-
-export const typeOptions = [
-    { label: CATEGORY.ALL, value: CATEGORY.ALL },
-    { label: CATEGORY.HOUSE_TYPE, value: CATEGORY.HOUSE_TYPE },
-    { label: CATEGORY.UNIVERSITY, value: CATEGORY.UNIVERSITY },
-];
+export default HouseListView;
 
 const SortContainer = styled.div`
     display: flex;
