@@ -32,8 +32,6 @@ function ListItemDetailPage() {
   );
 }
 
-export default ListItemDetailPage;
-
 const DetailContainer = styled.div`
   display: flex;
   justify-content: center;
@@ -95,3 +93,4 @@ const BackButton = styled.button`
   background-color: none;
   cursor: pointer;
 `
+export default ListItemDetailPage;
