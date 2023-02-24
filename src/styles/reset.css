@@ -12,3 +12,7 @@ li {
 button {
   border: none;
 }
+
+select:focus {
+  outline: none;
+}
