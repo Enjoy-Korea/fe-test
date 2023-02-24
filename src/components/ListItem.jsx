@@ -46,12 +46,12 @@ const Content = styled.div`
 const ListItem = ({ item }) => {
   const navigate = useNavigate();
   const onMoveDetailPage = (e) => {
-    const id = e.target.closest('li').getAttribute('itemId');
+    const id = e.target.closest('li').getAttribute('itemID');
     navigate(`/detail/${id}`);
   };
 
   return (
-    <li itemId={item.id} onClick={onMoveDetailPage}>
+    <li itemID={item.id} onClick={onMoveDetailPage}>
       <ListBox>
         <Title>
           <p className="university">{item.university}</p>

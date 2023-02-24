@@ -75,12 +75,10 @@ const ImageBox = styled.div`
 
 const ListItemDetail = () => {
   const { id } = useParams();
-  console.log(id);
-
   const [item, setItem] = useState();
 
   useEffect(() => {
-    const item = data.find((el) => el.id == id);
+    const item = data.find((el) => el.id === parseInt(id));
     setItem(item);
   }, [id]);
 
