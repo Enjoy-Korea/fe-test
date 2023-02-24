@@ -47,7 +47,7 @@ const ListItem = ({ item }) => {
   const navigate = useNavigate();
   const onMoveDetailPage = (e) => {
     const id = e.target.closest('li').getAttribute('itemID');
-    navigate(`/detail/${id}`);
+    navigate(`/${id}`);
   };
 
   return (
