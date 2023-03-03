@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import SubContent from "./components/SubContent";
 
 const PageContainer = styled.div`
   display: flex;
@@ -44,23 +45,6 @@ const HouseDescription = styled.div`
   padding: 24px 0 36px;
 `;
 
-const SubContentWrapper = styled.div`
-  padding: 18px 0;
-  border-bottom: 1px solid gray;
-
-  /* TODO: 마지막 요소 border bottom 제거 */
-`;
-
-const SubTitle = styled.h2`
-  font-size: 16px;
-  font-weight: 600;
-  color: #777;
-  margin: 0;
-  margin-bottom: 8px;
-`;
-
-const SubContent = styled.div``;
-
 const images = [
   {
     url: "http://si.wsj.net/public/resources/images/OB-YO176_hodcol_H_20130815124744.jpg",
@@ -72,7 +56,10 @@ const images = [
   }
 ];
 
+// TODO: media query 적용
 function HouseDetailPage() {
+  // TODO: detail data fetching
+
   return (
     <PageContainer>
       <CarouselContainer>
@@ -90,19 +77,12 @@ function HouseDetailPage() {
           is located within a 2-minute walk of Oryu-dong Station Line 1. - Nearby university :
           Hanyang Univ., Korea Univ., HUFS, Konkuk Univ.
         </HouseDescription>
-        {/* TODO: SubContent 컵포넌트 분리 */}
-        <SubContentWrapper>
-          <SubTitle>University</SubTitle>
-          <SubContent>울진대학교</SubContent>
-        </SubContentWrapper>
-        <SubContentWrapper>
-          <SubTitle>houseType</SubTitle>
-          <SubContent>펜션</SubContent>
-        </SubContentWrapper>
-        <SubContentWrapper>
-          <SubTitle>Address</SubTitle>
-          <SubContent>경상북도 울진군 근남면 세포2길 1-21</SubContent>
-        </SubContentWrapper>
+        <SubContent title="University">
+          <div>image</div>
+          울진대학교
+        </SubContent>
+        <SubContent title="houseType">펜션</SubContent>
+        <SubContent title="Address">경상북도 울진군 근남면 세포2길 1-21</SubContent>
       </ContentContainer>
     </PageContainer>
   );
