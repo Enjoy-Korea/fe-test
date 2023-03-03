@@ -2,19 +2,19 @@ import React from "react";
 import styled from "styled-components";
 
 type TagStatusType = "info" | "warning" | "success";
-// type TagStatusColorType = {
-//   [key in TagStatusType]: {
-//     color: string;
-//     bgColor: string;
-//   };
-// };
+type TagStatusColorType = {
+  [key in TagStatusType]: {
+    color: string;
+    bgColor: string;
+  };
+};
 
 interface TagProps {
   type: TagStatusType;
   text: string;
 }
 
-const TagColor = {
+const TagColor: TagStatusColorType = {
   info: {
     color: "blue",
     bgColor: "skyblue"
