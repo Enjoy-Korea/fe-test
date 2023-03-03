@@ -33,6 +33,15 @@ const ResetButton = styled.button`
   cursor: pointer;
 `;
 
+const HouseListWrapper = styled.div``;
+
+const ListTitle = styled.h1`
+  margin: 0;
+  font-size: 18px;
+  font-weight: 500;
+  color: #d3d3d3;
+`;
+
 function MainListPage() {
   return (
     <Layout>
@@ -44,7 +53,13 @@ function MainListPage() {
         <UniversitySelect />
         <HouseTypeSelect />
       </FilterSection>
-      <HouseCard />
+      <HouseListWrapper>
+        <ListTitle>Available Houses</ListTitle>
+        <HouseCard />
+        <HouseCard />
+        <HouseCard />
+        <HouseCard />
+      </HouseListWrapper>
     </Layout>
   );
 }

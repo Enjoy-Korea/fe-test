@@ -10,6 +10,8 @@ const CardContainer = styled.div`
   align-items: center;
   width: 100%;
   max-height: 200px;
+  padding: 24px 0;
+  border-bottom: 1px solid gray;
   cursor: pointer;
 `;
 
