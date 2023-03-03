@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import FilterSectionLayout from "../FilterSection";
+import SelectLayout from "../SelectLayout";
 
 // MEMO: CSS 추가 필요
 const Label = styled.label`
@@ -22,14 +22,14 @@ function HouseTypeSelect() {
   // fetch flat, studio, hotel array
 
   return (
-    <FilterSectionLayout filterWith="House Type">
+    <SelectLayout filterWith="House Type">
       {houseTypeList.map((houseType, index) => (
         <Label htmlFor={houseType.type} key={`${houseType}-${index}`}>
           <Checkbox type="checkbox" id={houseType.type} />
           {houseType.type} ({houseType.count})
         </Label>
       ))}
-    </FilterSectionLayout>
+    </SelectLayout>
   );
 }
 

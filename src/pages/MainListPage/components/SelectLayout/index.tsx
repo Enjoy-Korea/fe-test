@@ -16,10 +16,7 @@ const SectionName = styled.h4`
   color: #777;
 `;
 
-export default function FilterSectionLayout({
-  filterWith,
-  children
-}: PropsWithChildren<FilterSectionProps>) {
+function SelectLayout({ filterWith, children }: PropsWithChildren<FilterSectionProps>) {
   return (
     <Content>
       <SectionName>{filterWith}</SectionName>
@@ -27,3 +24,5 @@ export default function FilterSectionLayout({
     </Content>
   );
 }
+
+export default SelectLayout;

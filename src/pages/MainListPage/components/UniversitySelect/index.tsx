@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import FilterSectionLayout from "../FilterSection";
+import SelectLayout from "../SelectLayout";
 
 // MEMO: CSS 추가 필요
 const Label = styled.label`
@@ -28,14 +28,14 @@ const universityTypeList = [
 
 function UniversitySelect() {
   return (
-    <FilterSectionLayout filterWith="University">
+    <SelectLayout filterWith="University">
       {universityTypeList.map((university, index) => (
         <Label htmlFor={university.name} key={`${university.name}-${index}`}>
           <RadioBox type="radio" name="University" value={university.name} />
           {university.name} ({university.count})
         </Label>
       ))}
-    </FilterSectionLayout>
+    </SelectLayout>
   );
 }
 
