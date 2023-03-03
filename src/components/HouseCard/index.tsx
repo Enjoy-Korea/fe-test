@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import Tag from "../Tag";
 
 // interface HouseCardProps {}
 
@@ -57,7 +58,7 @@ export default function HouseCard() {
       <ContentWrapper>
         <HouseType>Enkorplex</HouseType>
         <HouseName>Enkor Plex</HouseName>
-        <div>Tag: university</div>
+        <Tag type="info" text="university" />
         <Address>address address address address address</Address>
       </ContentWrapper>
     </CardContainer>
