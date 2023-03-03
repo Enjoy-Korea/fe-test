@@ -1,7 +1,13 @@
 import React from "react";
 
+import HouseCard from "../../components/HouseCard";
+
 function MainListPage() {
-  return <div>MainListPage</div>;
+  return (
+    <div>
+      <HouseCard />
+    </div>
+  );
 }
 
 export default MainListPage;
