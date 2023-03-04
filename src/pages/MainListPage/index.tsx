@@ -61,9 +61,15 @@ function MainListPage() {
       <HouseListWrapper>
         <ListTitle>Available Houses</ListTitle>
         {houseList.map((house) => (
-          <div key={house.id}>{house.name}</div>
+          <HouseCard
+            key={house.id}
+            img={house.images[0].url}
+            houseType={house.houseType}
+            houseName={house.name}
+            university={house.university}
+            address={house.address}
+          />
         ))}
-        <HouseCard />
       </HouseListWrapper>
     </Layout>
   );
