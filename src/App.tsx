@@ -6,8 +6,8 @@ import MainListPage from "./pages/MainListPage";
 function App() {
   return (
     <div className="App">
-      {/* <MainListPage /> */}
-      <HouseDetailPage />
+      <MainListPage />
+      {/* <HouseDetailPage /> */}
     </div>
   );
 }
