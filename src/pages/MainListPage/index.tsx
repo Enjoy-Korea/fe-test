@@ -1,9 +1,12 @@
 import React from "react";
 import styled from "styled-components";
+import { useRecoilValue } from "recoil";
 
 import HouseCard from "../../components/HouseCard";
 import HouseTypeSelect from "./components/HouseTypeSelect";
 import UniversitySelect from "./components/UniversitySelect";
+
+import { houseListState } from "./store";
 
 const Layout = styled.div`
   display: flex;
@@ -43,6 +46,8 @@ const ListTitle = styled.h1`
 `;
 
 function MainListPage() {
+  const houseList = useRecoilValue(houseListState);
+
   return (
     <Layout>
       <FilterSection>
@@ -55,10 +60,17 @@ function MainListPage() {
       </FilterSection>
       <HouseListWrapper>
         <ListTitle>Available Houses</ListTitle>
-        <HouseCard />
-        <HouseCard />
-        <HouseCard />
-        <HouseCard />
+        {houseList.map((house) => (
+          <HouseCard
+            key={house.id}
+            houseId={house.id}
+            img={house.images[0].url}
+            houseType={house.houseType}
+            houseName={house.name}
+            university={house.university}
+            address={house.address}
+          />
+        ))}
       </HouseListWrapper>
     </Layout>
   );

@@ -1,12 +1,27 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
+
 import Tag from "../Tag";
 
-// interface HouseCardProps {}
+interface HouseCardProps {
+  houseId: number;
+  img: string;
+  houseType: string;
+  houseName: string;
+  university: string;
+  address: string;
+}
+
+const StyledLink = styled(Link)`
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
+  color: black;
+`;
 
 const CardContainer = styled.div`
   display: flex;
-  justify-content: center;
   align-items: center;
   width: 100%;
   max-height: 200px;
@@ -51,18 +66,27 @@ const Address = styled.span`
   color: gray;
 `;
 
-export default function HouseCard() {
+export default function HouseCard({
+  houseId,
+  img,
+  houseType,
+  houseName,
+  university,
+  address
+}: HouseCardProps) {
   return (
-    <CardContainer>
-      <ImageWrapper>
-        <TempImage src="http://si.wsj.net/public/resources/images/OB-YO176_hodcol_H_20130815124744.jpg" />
-      </ImageWrapper>
-      <ContentWrapper>
-        <HouseType>Enkorplex</HouseType>
-        <HouseName>Enkor Plex</HouseName>
-        <Tag type="info" text="university" />
-        <Address>address address address address address</Address>
-      </ContentWrapper>
-    </CardContainer>
+    <StyledLink to={`/houses/${houseId}`}>
+      <CardContainer>
+        <ImageWrapper>
+          <TempImage src={img} />
+        </ImageWrapper>
+        <ContentWrapper>
+          <HouseType>{houseType}</HouseType>
+          <HouseName>{houseName}</HouseName>
+          <Tag type="info" text={university} />
+          <Address>{address}</Address>
+        </ContentWrapper>
+      </CardContainer>
+    </StyledLink>
   );
 }

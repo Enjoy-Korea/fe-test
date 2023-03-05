@@ -1,6 +1,9 @@
 import React from "react";
+import { useRouteMatch } from "react-router-dom";
 import styled from "styled-components";
+
 import SubContent from "./components/SubContent";
+import useHouseDetailFetch from "./hooks/useHouseDetailFetch";
 
 const PageContainer = styled.div`
   display: flex;
@@ -18,6 +21,7 @@ const CarouselContainer = styled.div`
 const ContentContainer = styled.div`
   display: flex;
   flex-direction: column;
+  width: 100%;
   max-width: 600px;
   padding: 0 48px;
 `;
@@ -43,46 +47,32 @@ const HouseTitle = styled.h1`
 
 const HouseDescription = styled.div`
   padding: 24px 0 36px;
+  white-space: pre-wrap;
 `;
-
-const images = [
-  {
-    url: "http://si.wsj.net/public/resources/images/OB-YO176_hodcol_H_20130815124744.jpg",
-    key: 1
-  },
-  {
-    url: "https://image.pensionlife.co.kr/penimg/pen_1/pen_19/1977/9734f7418fcc01a2321ba800b1f2c7ee.jpg",
-    key: 2
-  }
-];
 
 // TODO: media query 적용
 function HouseDetailPage() {
-  // TODO: detail data fetching
+  const {
+    params: { id }
+  } = useRouteMatch<{ id: string }>();
+
+  const { data, isLoading } = useHouseDetailFetch(Number(id));
 
   return (
     <PageContainer>
       <CarouselContainer>
-        {images.map((image) => (
+        {data?.images.map((image) => (
           <ImageWrapper key={image.key}>
             <TempImage src={image.url} />
           </ImageWrapper>
         ))}
       </CarouselContainer>
       <ContentContainer>
-        <HouseTitle>Co-op City Hotel Oryu-dong</HouseTitle>
-        <HouseDescription>
-          you can refill other shampoo and body wash. all rooms are the same size, and there are two
-          single or one double bed. (Please note that the room assignment is random.) - Location: It
-          is located within a 2-minute walk of Oryu-dong Station Line 1. - Nearby university :
-          Hanyang Univ., Korea Univ., HUFS, Konkuk Univ.
-        </HouseDescription>
-        <SubContent title="University">
-          <div>image</div>
-          울진대학교
-        </SubContent>
-        <SubContent title="houseType">펜션</SubContent>
-        <SubContent title="Address">경상북도 울진군 근남면 세포2길 1-21</SubContent>
+        <HouseTitle>{data?.name}</HouseTitle>
+        <HouseDescription>{data?.description}</HouseDescription>
+        <SubContent title="University">{data?.university}</SubContent>
+        <SubContent title="houseType">{data?.houseType}</SubContent>
+        <SubContent title="Address">{data?.address}</SubContent>
       </ContentContainer>
     </PageContainer>
   );
