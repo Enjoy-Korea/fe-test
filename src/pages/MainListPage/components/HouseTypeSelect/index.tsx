@@ -1,6 +1,9 @@
 import React from "react";
+import { useRecoilValue, useSetRecoilState } from "recoil";
 import styled from "styled-components";
+
 import SelectLayout from "../SelectLayout";
+import { filterState, houseTypeWithCountState } from "../../store";
 
 // MEMO: CSS 추가 필요
 const Label = styled.label`
@@ -12,22 +15,29 @@ const Label = styled.label`
 
 const Checkbox = styled.input``;
 
-// TODO: filteredHouseList 에서 추출한 배열로 대체 필요
-const houseTypeList = [
-  { type: "펜션", count: 2 },
-  { type: "단독주택", count: 1 },
-  { type: "아파트", count: 2 }
-];
-
 function HouseTypeSelect() {
-  // fetch flat, studio, hotel array
+  const setFilterObject = useSetRecoilState(filterState);
+  const houseTypeList = useRecoilValue(houseTypeWithCountState);
+
+  const addFilterToList = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const houseType = e.target.id;
+    const isChecked = e.target.checked;
+
+    setFilterObject((obj) => ({
+      ...obj,
+      houseType: {
+        ...obj?.houseType,
+        [houseType]: isChecked
+      }
+    }));
+  };
 
   return (
     <SelectLayout filterWith="House Type">
-      {houseTypeList.map((houseType, index) => (
-        <Label htmlFor={houseType.type} key={`${houseType}-${index}`}>
-          <Checkbox type="checkbox" id={houseType.type} />
-          {houseType.type} ({houseType.count})
+      {Object.entries(houseTypeList).map(([houseType, count]) => (
+        <Label htmlFor={houseType} key={`${houseType}`}>
+          <Checkbox type="checkbox" id={houseType} onChange={addFilterToList} />
+          {houseType} ({count})
         </Label>
       ))}
     </SelectLayout>

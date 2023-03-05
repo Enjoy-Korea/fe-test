@@ -6,7 +6,7 @@ import HouseCard from "../../components/HouseCard";
 import HouseTypeSelect from "./components/HouseTypeSelect";
 import UniversitySelect from "./components/UniversitySelect";
 
-import { filterdHouseListState, houseListState } from "./store";
+import { filterdHouseListState } from "./store";
 
 const Layout = styled.div`
   display: flex;
