@@ -1,4 +1,5 @@
 import React from "react";
+import { useRouteMatch } from "react-router-dom";
 import styled from "styled-components";
 
 import SubContent from "./components/SubContent";
@@ -51,8 +52,11 @@ const HouseDescription = styled.div`
 
 // TODO: media query 적용
 function HouseDetailPage() {
-  // TODO: detail data fetching
-  const { data, isLoading } = useHouseDetailFetch(1); // houseId should be from url
+  const {
+    params: { id }
+  } = useRouteMatch<{ id: string }>();
+
+  const { data, isLoading } = useHouseDetailFetch(Number(id));
 
   return (
     <PageContainer>
