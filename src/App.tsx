@@ -7,8 +7,8 @@ function App() {
   return (
     <Suspense fallback={<div>loading...</div>}>
       <div className="App">
-        <MainListPage />
-        {/* <HouseDetailPage /> */}
+        {/* <MainListPage /> */}
+        <HouseDetailPage />
       </div>
     </Suspense>
   );
