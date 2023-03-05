@@ -1,6 +1,7 @@
 import React from "react";
-import { useRecoilValue, useSetRecoilState } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 import styled from "styled-components";
+
 import { filterState, universityFilterState } from "../../store";
 import SelectLayout from "../SelectLayout";
 
@@ -22,7 +23,7 @@ const Checkbox = styled.input`
 `;
 
 function UniversitySelect() {
-  const setFilterObject = useSetRecoilState(filterState);
+  const [filterObject, setFilterObject] = useRecoilState(filterState);
   const universityFilter = useRecoilValue(universityFilterState);
 
   const addFilterToList = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -42,7 +43,12 @@ function UniversitySelect() {
     <SelectLayout filterWith="University">
       {Object.keys(universityFilter).map((university, index) => (
         <Label htmlFor={university} key={`${university}-${index}`}>
-          <Checkbox type="checkbox" id={university} onChange={addFilterToList} />
+          <Checkbox
+            type="checkbox"
+            id={university}
+            onChange={addFilterToList}
+            checked={filterObject?.university[university]}
+          />
           {university}
         </Label>
       ))}

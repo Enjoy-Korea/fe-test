@@ -1,5 +1,5 @@
 import React from "react";
-import { useRecoilValue, useSetRecoilState } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 import styled from "styled-components";
 
 import SelectLayout from "../SelectLayout";
@@ -16,7 +16,7 @@ const Label = styled.label`
 const Checkbox = styled.input``;
 
 function HouseTypeSelect() {
-  const setFilterObject = useSetRecoilState(filterState);
+  const [filterObject, setFilterObject] = useRecoilState(filterState);
   const houseTypeList = useRecoilValue(houseTypeWithCountState);
 
   const addFilterToList = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -36,7 +36,12 @@ function HouseTypeSelect() {
     <SelectLayout filterWith="House Type">
       {Object.entries(houseTypeList).map(([houseType, count]) => (
         <Label htmlFor={houseType} key={`${houseType}`}>
-          <Checkbox type="checkbox" id={houseType} onChange={addFilterToList} />
+          <Checkbox
+            type="checkbox"
+            id={houseType}
+            onChange={addFilterToList}
+            checked={filterObject?.houseType[houseType]}
+          />
           {houseType} ({count})
         </Label>
       ))}
