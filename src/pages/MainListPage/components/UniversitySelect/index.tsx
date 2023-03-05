@@ -1,5 +1,7 @@
 import React from "react";
+import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 import styled from "styled-components";
+import { filterState, universityFilterState } from "../../store";
 import SelectLayout from "../SelectLayout";
 
 // MEMO: CSS 추가 필요
@@ -15,24 +17,33 @@ const Label = styled.label`
   background-color: rgba(255, 255, 0, 0.3);
 `;
 
-const RadioBox = styled.input`
+const Checkbox = styled.input`
   /* visibility: hidden; */
 `;
 
-const universityTypeList = [
-  { name: "울진대학교", count: 2 },
-  { name: "외국대학교", count: 2 },
-  { name: "서울대학교", count: 2 },
-  { name: "용인대학교", count: 2 }
-];
-
 function UniversitySelect() {
+  const setFilterObject = useSetRecoilState(filterState);
+  const universityFilter = useRecoilValue(universityFilterState);
+
+  const addFilterToList = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const universityName = e.target.id;
+    const isChecked = e.target.checked;
+
+    setFilterObject((obj) => ({
+      ...obj,
+      university: {
+        ...obj?.university,
+        [universityName]: isChecked
+      }
+    }));
+  };
+
   return (
     <SelectLayout filterWith="University">
-      {universityTypeList.map((university, index) => (
-        <Label htmlFor={university.name} key={`${university.name}-${index}`}>
-          <RadioBox type="radio" name="University" value={university.name} />
-          {university.name} ({university.count})
+      {Object.keys(universityFilter).map((university, index) => (
+        <Label htmlFor={university} key={`${university}-${index}`}>
+          <Checkbox type="checkbox" id={university} onChange={addFilterToList} />
+          {university}
         </Label>
       ))}
     </SelectLayout>

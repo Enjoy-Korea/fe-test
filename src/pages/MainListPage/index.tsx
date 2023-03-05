@@ -6,7 +6,7 @@ import HouseCard from "../../components/HouseCard";
 import HouseTypeSelect from "./components/HouseTypeSelect";
 import UniversitySelect from "./components/UniversitySelect";
 
-import { houseListState } from "./store";
+import { filterdHouseListState, houseListState } from "./store";
 
 const Layout = styled.div`
   display: flex;
@@ -16,6 +16,8 @@ const Layout = styled.div`
 const FilterSection = styled.aside`
   display: flex;
   flex-direction: column;
+  width: 260px;
+  padding: 0 20px 0 10px;
 `;
 
 const FilterHeader = styled.section`
@@ -46,7 +48,7 @@ const ListTitle = styled.h1`
 `;
 
 function MainListPage() {
-  const houseList = useRecoilValue(houseListState);
+  const houseList = useRecoilValue(filterdHouseListState);
 
   return (
     <Layout>

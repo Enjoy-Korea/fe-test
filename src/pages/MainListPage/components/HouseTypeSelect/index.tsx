@@ -12,6 +12,7 @@ const Label = styled.label`
 
 const Checkbox = styled.input``;
 
+// TODO: filteredHouseList 에서 추출한 배열로 대체 필요
 const houseTypeList = [
   { type: "펜션", count: 2 },
   { type: "단독주택", count: 1 },
