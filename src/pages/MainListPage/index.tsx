@@ -63,6 +63,7 @@ function MainListPage() {
         {houseList.map((house) => (
           <HouseCard
             key={house.id}
+            houseId={house.id}
             img={house.images[0].url}
             houseType={house.houseType}
             houseName={house.name}

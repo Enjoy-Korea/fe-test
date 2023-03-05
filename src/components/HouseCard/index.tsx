@@ -1,14 +1,24 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
+
 import Tag from "../Tag";
 
 interface HouseCardProps {
+  houseId: number;
   img: string;
   houseType: string;
   houseName: string;
   university: string;
   address: string;
 }
+
+const StyledLink = styled(Link)`
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
+  color: black;
+`;
 
 const CardContainer = styled.div`
   display: flex;
@@ -57,6 +67,7 @@ const Address = styled.span`
 `;
 
 export default function HouseCard({
+  houseId,
   img,
   houseType,
   houseName,
@@ -64,16 +75,18 @@ export default function HouseCard({
   address
 }: HouseCardProps) {
   return (
-    <CardContainer>
-      <ImageWrapper>
-        <TempImage src={img} />
-      </ImageWrapper>
-      <ContentWrapper>
-        <HouseType>{houseType}</HouseType>
-        <HouseName>{houseName}</HouseName>
-        <Tag type="info" text={university} />
-        <Address>{address}</Address>
-      </ContentWrapper>
-    </CardContainer>
+    <StyledLink to={`/houses/${houseId}`}>
+      <CardContainer>
+        <ImageWrapper>
+          <TempImage src={img} />
+        </ImageWrapper>
+        <ContentWrapper>
+          <HouseType>{houseType}</HouseType>
+          <HouseName>{houseName}</HouseName>
+          <Tag type="info" text={university} />
+          <Address>{address}</Address>
+        </ContentWrapper>
+      </CardContainer>
+    </StyledLink>
   );
 }
