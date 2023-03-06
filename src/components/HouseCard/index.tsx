@@ -32,6 +32,7 @@ const CardContainer = styled.div`
 
 const ImageWrapper = styled.div`
   width: 200px;
+  min-width: 200px;
   height: 150px;
   /* ratio 추가 */
   margin-right: 12px;
@@ -48,6 +49,8 @@ const TempImage = styled.img`
 const ContentWrapper = styled.div`
   display: flex;
   flex-direction: column;
+  width: 100%;
+  min-width: 270px;
 `;
 
 const HouseType = styled.span`

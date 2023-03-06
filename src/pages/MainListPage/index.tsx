@@ -9,6 +9,7 @@ import { filterdHouseListState, filterState } from "./store";
 
 const Layout = styled.div`
   display: flex;
+  justify-content: center;
   width: 100%;
 `;
 
@@ -22,6 +23,7 @@ const FilterSection = styled.aside`
 const FilterHeader = styled.section`
   display: flex;
   justify-content: space-between;
+  align-items: flex-end;
 `;
 
 const FilterTitle = styled.h2`
@@ -38,7 +40,9 @@ const ResetButton = styled.button`
   cursor: pointer;
 `;
 
-const HouseListWrapper = styled.div``;
+const HouseListWrapper = styled.div`
+  min-width: 480px;
+`;
 
 const ListTitle = styled.h1`
   margin: 0;
