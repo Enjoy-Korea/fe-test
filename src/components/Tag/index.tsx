@@ -1,17 +1,17 @@
-import React from "react";
-import styled from "styled-components";
+import React from "react"
+import styled from "styled-components"
 
-type TagStatusType = "info" | "warning" | "success";
+type TagStatusType = "info" | "warning" | "success"
 type TagStatusColorType = {
   [key in TagStatusType]: {
-    color: string;
-    bgColor: string;
-  };
-};
+    color: string
+    bgColor: string
+  }
+}
 
 interface TagProps {
-  type: TagStatusType;
-  text: string;
+  type: TagStatusType
+  text: string
 }
 
 const TagColor: TagStatusColorType = {
@@ -27,7 +27,7 @@ const TagColor: TagStatusColorType = {
     color: "green",
     bgColor: "lime"
   }
-};
+}
 
 const Container = styled.span<{ type: TagStatusType }>`
   width: fit-content;
@@ -37,8 +37,8 @@ const Container = styled.span<{ type: TagStatusType }>`
   background-color: ${({ type }) => TagColor[type].bgColor};
   border-radius: 6px;
   padding: 4px 8px;
-`;
+`
 
 export default function Tag({ type = "info", text = "" }: TagProps) {
-  return <Container type={type}>{text}</Container>;
+  return <Container type={type}>{text}</Container>
 }

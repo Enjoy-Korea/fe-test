@@ -1,9 +1,9 @@
-import React from "react";
-import { useRecoilState, useRecoilValue } from "recoil";
-import styled from "styled-components";
+import React from "react"
+import { useRecoilState, useRecoilValue } from "recoil"
+import styled from "styled-components"
 
-import { filterState, universityFilterState } from "../../store";
-import SelectLayout from "../SelectLayout";
+import { filterState, universityFilterState } from "../../store"
+import SelectLayout from "../SelectLayout"
 
 const Label = styled.label<{ isChecked: boolean }>`
   display: flex;
@@ -14,19 +14,19 @@ const Label = styled.label<{ isChecked: boolean }>`
   border-radius: 8px;
   border: 1px solid ${({ isChecked }) => (isChecked ? "yellow" : "gray")};
   background-color: ${({ isChecked }) => (isChecked ? "rgba(255, 255, 0, 0.3)" : "transparent")};
-`;
+`
 
 const Checkbox = styled.input`
   /* visibility: hidden; */
-`;
+`
 
 function UniversitySelect() {
-  const [filterObject, setFilterObject] = useRecoilState(filterState);
-  const universityFilter = useRecoilValue(universityFilterState);
+  const [filterObject, setFilterObject] = useRecoilState(filterState)
+  const universityFilter = useRecoilValue(universityFilterState)
 
   const addFilterToList = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const universityName = e.target.id;
-    const isChecked = e.target.checked;
+    const universityName = e.target.id
+    const isChecked = e.target.checked
 
     setFilterObject((obj) => ({
       ...obj,
@@ -34,8 +34,8 @@ function UniversitySelect() {
         ...obj?.university,
         [universityName]: isChecked
       }
-    }));
-  };
+    }))
+  }
 
   return (
     <SelectLayout filterWith="University">
@@ -55,7 +55,7 @@ function UniversitySelect() {
         </Label>
       ))}
     </SelectLayout>
-  );
+  )
 }
 
-export default UniversitySelect;
+export default UniversitySelect

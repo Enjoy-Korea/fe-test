@@ -1,34 +1,34 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from "react"
 
-import api from "../../../api";
-import { HouseType } from "../../../api/house";
+import api from "../../../api"
+import { HouseType } from "../../../api/house"
 
 function useHouseDetailFetch(houseId: number) {
-  const [data, setData] = useState<HouseType>();
-  const [error, setError] = useState<any>(); // TODO: Error Typing
-  const [isLoading, setIsLoading] = useState(false);
+  const [data, setData] = useState<HouseType>()
+  const [error, setError] = useState<unknown>() // TODO: Error Typing
+  const [isLoading, setIsLoading] = useState(false)
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        setIsLoading(true);
-        const data = await api.getHouseDetail(houseId);
-        setData(data);
+        setIsLoading(true)
+        const data = await api.getHouseDetail(houseId)
+        setData(data)
       } catch (err) {
-        setError(err);
+        setError(err)
       } finally {
-        setIsLoading(false);
+        setIsLoading(false)
       }
-    };
+    }
 
-    fetchData();
-  }, [houseId]);
+    fetchData()
+  }, [houseId])
 
   return {
     isLoading,
     data,
     error
-  };
+  }
 }
 
-export default useHouseDetailFetch;
+export default useHouseDetailFetch

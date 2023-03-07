@@ -1,8 +1,8 @@
-import React, { Suspense } from "react";
-import { Switch, Route } from "react-router-dom";
+import React, { Suspense } from "react"
+import { Switch, Route } from "react-router-dom"
 
-import HouseDetailPage from "./pages/HouseDetailPage";
-import MainListPage from "./pages/MainListPage";
+import HouseDetailPage from "./pages/HouseDetailPage"
+import MainListPage from "./pages/MainListPage"
 
 function App() {
   return (
@@ -14,7 +14,7 @@ function App() {
         </Switch>
       </div>
     </Suspense>
-  );
+  )
 }
 
-export default App;
+export default App

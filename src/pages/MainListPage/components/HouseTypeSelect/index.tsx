@@ -1,9 +1,9 @@
-import React from "react";
-import { useRecoilState, useRecoilValue } from "recoil";
-import styled from "styled-components";
+import React from "react"
+import { useRecoilState, useRecoilValue } from "recoil"
+import styled from "styled-components"
 
-import SelectLayout from "../SelectLayout";
-import { filterState, houseTypeWithCountState } from "../../store";
+import SelectLayout from "../SelectLayout"
+import { filterState, houseTypeWithCountState } from "../../store"
 
 const Label = styled.label`
   height: 20px;
@@ -11,17 +11,17 @@ const Label = styled.label`
   align-items: center;
   font-size: 14px;
   padding: 4px 0;
-`;
+`
 
-const Checkbox = styled.input``;
+const Checkbox = styled.input``
 
 function HouseTypeSelect() {
-  const [filterObject, setFilterObject] = useRecoilState(filterState);
-  const houseTypeList = useRecoilValue(houseTypeWithCountState);
+  const [filterObject, setFilterObject] = useRecoilState(filterState)
+  const houseTypeList = useRecoilValue(houseTypeWithCountState)
 
   const addFilterToList = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const houseType = e.target.id;
-    const isChecked = e.target.checked;
+    const houseType = e.target.id
+    const isChecked = e.target.checked
 
     setFilterObject((obj) => ({
       ...obj,
@@ -29,8 +29,8 @@ function HouseTypeSelect() {
         ...obj?.houseType,
         [houseType]: isChecked
       }
-    }));
-  };
+    }))
+  }
 
   return (
     <SelectLayout filterWith="House Type">
@@ -46,7 +46,7 @@ function HouseTypeSelect() {
         </Label>
       ))}
     </SelectLayout>
-  );
+  )
 }
 
-export default HouseTypeSelect;
+export default HouseTypeSelect
