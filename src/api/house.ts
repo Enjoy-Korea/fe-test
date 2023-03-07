@@ -1,6 +1,5 @@
 import data from "../data/houses.mock.json"
 
-// TODO: 타이핑 옮기기
 export interface HouseType {
   id: number
   name: string
