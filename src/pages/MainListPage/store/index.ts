@@ -41,9 +41,8 @@ export const universityFilterState = selector<{ [key: string]: boolean }>({
     const houseList = get(houseListState);
 
     const universityList = new Set(houseList.map((house) => house.university));
-    const universities = Array.from(universityList); // TODO: spread 연산자로 바꾸기 / typescript option
 
-    const universityObj = universities.reduce(
+    const universityObj = [...universityList].reduce(
       (obj, curUniversity) => ({
         ...obj,
         [curUniversity]: false
@@ -61,9 +60,8 @@ export const houseTypeFilterState = selector<{ [key: string]: boolean }>({
     const houseList = get(houseListState);
 
     const houseTypeList = new Set(houseList.map((house) => house.houseType));
-    const houseTypes = Array.from(houseTypeList);
 
-    const houseTypeObj = houseTypes.reduce(
+    const houseTypeObj = [...houseTypeList].reduce(
       (obj, curType) => ({
         ...obj,
         [curType]: false
@@ -81,9 +79,6 @@ export const houseListState = selector<HouseType[]>({
   get: async () => {
     const response = await api.getHouseList();
 
-    console.log(response);
-
-    // Modeling 추가
     return response;
   }
 });
