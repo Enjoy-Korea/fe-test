@@ -5,7 +5,6 @@ import styled from "styled-components";
 import { filterState, universityFilterState } from "../../store";
 import SelectLayout from "../SelectLayout";
 
-// MEMO: CSS 추가 필요
 const Label = styled.label<{ isChecked: boolean }>`
   display: flex;
   align-items: center;
