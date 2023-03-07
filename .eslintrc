@@ -21,7 +21,8 @@
   },
   "rules": {
     "prettier/prettier": ["error", { "endOfLine": "auto", "semi": false }],
-    "react/jsx-uses-vars": "error"
+    "react/jsx-uses-vars": "error",
+    "@typescript-eslint/explicit-module-boundary-types": "off"
   },
   "ignorePatterns": ["src/data"]
 }

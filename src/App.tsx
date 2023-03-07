@@ -7,12 +7,10 @@ import MainListPage from "./pages/MainListPage"
 function App() {
   return (
     <Suspense fallback={<div>loading...</div>}>
-      <div className="App">
-        <Switch>
-          <Route path="/" exact component={MainListPage} />
-          <Route path="/houses/:id" component={HouseDetailPage} />
-        </Switch>
-      </div>
+      <Switch>
+        <Route path="/" exact component={MainListPage} />
+        <Route path="/houses/:id" component={HouseDetailPage} />
+      </Switch>
     </Suspense>
   )
 }
