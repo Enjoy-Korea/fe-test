@@ -1,11 +1,11 @@
-import { atom, selector } from "recoil";
+import { atom, selector } from "recoil"
 
-import api from "../../../api";
-import { HouseType } from "../../../api/house";
+import api from "../../../api"
+import { HouseType } from "../../../api/house"
 
 interface FilterType {
-  university: { [key: string]: boolean };
-  houseType: { [key: string]: boolean };
+  university: { [key: string]: boolean }
+  houseType: { [key: string]: boolean }
 }
 
 const KEY = {
@@ -16,7 +16,7 @@ const KEY = {
   houseTypeFilterState: "MainListPage/houseTypeFilterState",
   houseTypeWithCountState: "MainListPage/houseTypeWithCountState",
   universityFilteredHouseListState: "MainListPage/universityFilteredHouseListState"
-};
+}
 
 // MEMO: 합쳐진 filter 정보
 export const filterState = atom<FilterType>({
@@ -24,124 +24,119 @@ export const filterState = atom<FilterType>({
   default: selector({
     key: `${KEY.filterState}/default`,
     get: ({ get }) => {
-      const universityfilter = get(universityFilterState);
-      const houseTypefilter = get(houseTypeFilterState);
+      const universityfilter = get(universityFilterState)
+      const houseTypefilter = get(houseTypeFilterState)
 
       return {
         university: universityfilter,
         houseType: houseTypefilter
-      };
+      }
     }
   })
-});
+})
 
 export const universityFilterState = selector<{ [key: string]: boolean }>({
   key: KEY.universityFilterState,
   get: ({ get }) => {
-    const houseList = get(houseListState);
+    const houseList = get(houseListState)
 
-    const universityList = new Set(houseList.map((house) => house.university));
-    const universities = Array.from(universityList); // TODO: spread 연산자로 바꾸기 / typescript option
+    const universityList = new Set(houseList.map((house) => house.university))
 
-    const universityObj = universities.reduce(
+    const universityObj = [...universityList].reduce(
       (obj, curUniversity) => ({
         ...obj,
         [curUniversity]: false
       }),
       {}
-    );
+    )
 
-    return universityObj as { [key: string]: boolean };
+    return universityObj as { [key: string]: boolean }
   }
-});
+})
 
 export const houseTypeFilterState = selector<{ [key: string]: boolean }>({
   key: KEY.houseTypeFilterState,
   get: ({ get }) => {
-    const houseList = get(houseListState);
+    const houseList = get(houseListState)
 
-    const houseTypeList = new Set(houseList.map((house) => house.houseType));
-    const houseTypes = Array.from(houseTypeList);
+    const houseTypeList = new Set(houseList.map((house) => house.houseType))
 
-    const houseTypeObj = houseTypes.reduce(
+    const houseTypeObj = [...houseTypeList].reduce(
       (obj, curType) => ({
         ...obj,
         [curType]: false
       }),
       {}
-    );
+    )
 
-    return houseTypeObj as { [key: string]: boolean };
+    return houseTypeObj as { [key: string]: boolean }
   }
-});
+})
 
 // MEMO: 실제 api에서 처음 가져온 house 리스트 데이터 / read only
 export const houseListState = selector<HouseType[]>({
   key: KEY.houseListState,
   get: async () => {
-    const response = await api.getHouseList();
+    const response = await api.getHouseList()
 
-    console.log(response);
-
-    // Modeling 추가
-    return response;
+    return response
   }
-});
+})
 
 // MEMO: 필터에 따라 리스트에 나타나는 house들
 export const filterdHouseListState = selector({
   key: KEY.filterdHouseListState,
   get: ({ get }) => {
-    const filterObj = get(filterState);
-    const houseList = get(houseListState);
+    const filterObj = get(filterState)
+    const houseList = get(houseListState)
 
-    const isUniversityAllFalse = Object.values(filterObj?.university).every((value) => !value);
-    const isHouseTypeAllFalse = Object.values(filterObj?.houseType).every((value) => !value);
-    const isAllFilterNotSelected = isUniversityAllFalse && isHouseTypeAllFalse;
+    const isUniversityAllFalse = Object.values(filterObj?.university).every((value) => !value)
+    const isHouseTypeAllFalse = Object.values(filterObj?.houseType).every((value) => !value)
+    const isAllFilterNotSelected = isUniversityAllFalse && isHouseTypeAllFalse
 
     if (!filterObj || isAllFilterNotSelected) {
-      return houseList;
+      return houseList
     }
 
     const filteredHouseList = houseList.filter((house) => {
       if (isHouseTypeAllFalse) {
-        return filterObj?.university[house.university];
+        return filterObj?.university[house.university]
       } else if (isUniversityAllFalse) {
-        return filterObj?.houseType[house.houseType];
+        return filterObj?.houseType[house.houseType]
       }
-      return filterObj?.university[house.university] && filterObj?.houseType[house.houseType];
-    });
+      return filterObj?.university[house.university] && filterObj?.houseType[house.houseType]
+    })
 
-    return filteredHouseList;
+    return filteredHouseList
   }
-});
+})
 
 // MEMO: only for house type and count / Read Only
 export const universityFilteredHouseListState = selector({
   key: KEY.universityFilteredHouseListState,
   get: ({ get }) => {
-    const filterObj = get(filterState);
-    const houseList = get(houseListState);
+    const filterObj = get(filterState)
+    const houseList = get(houseListState)
 
-    const isUniversityAllFalse = Object.values(filterObj?.university).every((value) => !value);
+    const isUniversityAllFalse = Object.values(filterObj?.university).every((value) => !value)
 
     if (!filterObj || isUniversityAllFalse) {
-      return houseList;
+      return houseList
     }
 
     const filteredHouseList = houseList.filter((house) => {
-      return filterObj?.university[house.university];
-    });
+      return filterObj?.university[house.university]
+    })
 
-    return filteredHouseList;
+    return filteredHouseList
   }
-});
+})
 
 export const houseTypeWithCountState = selector({
   key: KEY.houseTypeWithCountState,
   get: ({ get }) => {
-    const houseList = get(universityFilteredHouseListState);
-    const houseTypeObj = get(houseTypeFilterState);
+    const houseList = get(universityFilteredHouseListState)
+    const houseTypeObj = get(houseTypeFilterState)
 
     const defaultHouseTypeObj = Object.keys(houseTypeObj).reduce(
       (obj, cur) => ({
@@ -149,7 +144,7 @@ export const houseTypeWithCountState = selector({
         [cur]: 0
       }),
       {} as { [key: string]: number }
-    );
+    )
 
     const houseListVariation = houseList.reduce(
       (obj, cur) => ({
@@ -157,8 +152,8 @@ export const houseTypeWithCountState = selector({
         [cur.houseType]: (obj[cur.houseType] || 0) + 1
       }),
       defaultHouseTypeObj
-    );
+    )
 
-    return houseListVariation;
+    return houseListVariation
   }
-});
+})

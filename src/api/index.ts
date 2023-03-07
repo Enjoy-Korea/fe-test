@@ -1,5 +1,5 @@
-import houseAPI from "./house";
+import houseAPI from "./house"
 
 export default {
   ...houseAPI
-};
+}
