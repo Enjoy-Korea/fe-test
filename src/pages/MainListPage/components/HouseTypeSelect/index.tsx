@@ -5,12 +5,12 @@ import styled from "styled-components";
 import SelectLayout from "../SelectLayout";
 import { filterState, houseTypeWithCountState } from "../../store";
 
-// MEMO: CSS 추가 필요
 const Label = styled.label`
   height: 20px;
   display: flex;
   align-items: center;
   font-size: 14px;
+  padding: 4px 0;
 `;
 
 const Checkbox = styled.input``;

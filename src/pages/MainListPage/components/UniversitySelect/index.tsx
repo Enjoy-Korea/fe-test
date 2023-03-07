@@ -5,17 +5,15 @@ import styled from "styled-components";
 import { filterState, universityFilterState } from "../../store";
 import SelectLayout from "../SelectLayout";
 
-// MEMO: CSS 추가 필요
-const Label = styled.label`
+const Label = styled.label<{ isChecked: boolean }>`
   display: flex;
   align-items: center;
+  margin: 6px 0;
   padding: 12px 14px;
   font-size: 14px;
   border-radius: 8px;
-
-  /* active */
-  border: 1px solid yellow;
-  background-color: rgba(255, 255, 0, 0.3);
+  border: 1px solid ${({ isChecked }) => (isChecked ? "yellow" : "gray")};
+  background-color: ${({ isChecked }) => (isChecked ? "rgba(255, 255, 0, 0.3)" : "transparent")};
 `;
 
 const Checkbox = styled.input`
@@ -42,7 +40,11 @@ function UniversitySelect() {
   return (
     <SelectLayout filterWith="University">
       {Object.keys(universityFilter).map((university, index) => (
-        <Label htmlFor={university} key={`${university}-${index}`}>
+        <Label
+          htmlFor={university}
+          key={`${university}-${index}`}
+          isChecked={filterObject?.university[university]}
+        >
           <Checkbox
             type="checkbox"
             id={university}

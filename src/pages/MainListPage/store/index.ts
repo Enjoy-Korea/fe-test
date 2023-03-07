@@ -3,10 +3,9 @@ import { atom, selector } from "recoil";
 import api from "../../../api";
 import { HouseType } from "../../../api/house";
 
-// TODO: Typing 필요
 interface FilterType {
-  university?: any;
-  houseType?: any;
+  university: { [key: string]: boolean };
+  houseType: { [key: string]: boolean };
 }
 
 const KEY = {
@@ -20,7 +19,7 @@ const KEY = {
 };
 
 // MEMO: 합쳐진 filter 정보
-export const filterState = atom<FilterType | null>({
+export const filterState = atom<FilterType>({
   key: KEY.filterState,
   default: selector({
     key: `${KEY.filterState}/default`,
@@ -36,8 +35,7 @@ export const filterState = atom<FilterType | null>({
   })
 });
 
-// TODO: Typing 다시
-export const universityFilterState = selector<{ university: any }>({
+export const universityFilterState = selector<{ [key: string]: boolean }>({
   key: KEY.universityFilterState,
   get: ({ get }) => {
     const houseList = get(houseListState);
@@ -53,7 +51,7 @@ export const universityFilterState = selector<{ university: any }>({
       {}
     );
 
-    return universityObj as { university: any };
+    return universityObj as { [key: string]: boolean };
   }
 });
 
