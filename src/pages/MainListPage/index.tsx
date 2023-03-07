@@ -57,6 +57,10 @@ function MainListPage() {
   const resetFilterObject = useResetRecoilState(filterState);
 
   const isHouseListEmpty = useMemo(() => houseList.length === 0, [houseList]);
+  const availableHouses = useMemo(
+    () => `${houseList.length} House${houseList.length <= 1 ? "" : "s"}`,
+    [houseList]
+  );
 
   const handleFilterReset = () => {
     resetFilterObject();
@@ -73,7 +77,7 @@ function MainListPage() {
         <HouseTypeSelect />
       </FilterSection>
       <HouseListWrapper>
-        <ListTitle>Available Houses</ListTitle>
+        <ListTitle>{availableHouses} Available</ListTitle>
         {houseList.map((house) => (
           <HouseCard
             key={house.id}
