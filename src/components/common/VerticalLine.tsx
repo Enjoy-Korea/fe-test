@@ -1,13 +1,21 @@
 import React from "react";
 import styled from "styled-components";
 
-export const VerticalLine = () => {
-  return <VerticalLineLayout />;
+interface VerticalLineProps {
+  height: number;
+}
+
+export const VerticalLine = ({ height }: VerticalLineProps) => {
+  return <VerticalLineLayout height={height} />;
 };
 
-const VerticalLineLayout = styled.div`
+interface VerticalLineLayoutProps {
+  height: number;
+}
+
+const VerticalLineLayout = styled.div<VerticalLineLayoutProps>`
   width: 0px;
-  height: 100%;
+  height: ${(props) => `${props.height}px`};
 
   border: 0.5px solid rgba(0, 0, 0, 0.3);
 
