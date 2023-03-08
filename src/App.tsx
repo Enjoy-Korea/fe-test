@@ -14,6 +14,7 @@ function App() {
 
 const AppLayout = styled.div`
   width: 80vw;
+  height: 0px;
   min-height: 100vh;
   margin: auto;
 
