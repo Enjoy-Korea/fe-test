@@ -1,13 +1,13 @@
 import React from "react";
 import styled from "styled-components";
-import { ItemList } from "./../../components/Item/ItemList";
+import { ItemListContainer } from "../../containers/Item/ItemListContainer";
 import { ItemSortingBoxContainer } from "./../../containers/Item/ItemSortingBoxContainer";
 
 export const MainListPage = () => {
   return (
     <MainListPageLayout>
       <ItemSortingBoxContainer />
-      <ItemList />
+      <ItemListContainer />
     </MainListPageLayout>
   );
 };
