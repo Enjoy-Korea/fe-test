@@ -30,12 +30,19 @@ const CheckboxLayout = styled.div`
   align-items: center;
 `;
 
-const Input = styled.input``;
+const Input = styled.input`
+  &:hover {
+    cursor: pointer;
+  }
+`;
 
 const CheckboxLabel = styled.label`
   font-size: 18px;
-
   margin-left: 10px;
-
   white-space: nowrap;
+
+  &:hover {
+    cursor: pointer;
+    opacity: 0.8;
+  }
 `;
