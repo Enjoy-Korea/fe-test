@@ -19,7 +19,7 @@ const AppLayout = styled.div`
 
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
 
   background-color: rgba(0, 0, 0, 0.05);
 `;

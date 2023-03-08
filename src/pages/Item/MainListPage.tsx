@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import { ItemList } from "../components/ItemList";
-import { ItemSortingBox } from "../components/ItemSortingBox";
+import { ItemSortingBox } from "../../components/Item/ItemSortingBox";
+import { ItemList } from "./../../components/Item/ItemList";
 
 export const MainListPage = () => {
   return (
@@ -20,5 +20,5 @@ const MainListPageLayout = styled.div`
   align-items: center;
   justify-content: flex-start;
 
-  padding: 50px;
+  padding: 30px;
 `;
