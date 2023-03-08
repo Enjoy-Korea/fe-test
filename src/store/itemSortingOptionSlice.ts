@@ -14,7 +14,7 @@ export const itemSortingOptionSlice = createSlice({
       return { ...itemSortingOptionInitialState };
     },
     setUniversity(state, action) {
-      return { ...state, universe: action.payload };
+      return { ...state, university: action.payload };
     },
     setHouseType(state, action) {
       return { ...state, houseType: action.payload };
