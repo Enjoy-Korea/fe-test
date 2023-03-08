@@ -2,8 +2,19 @@ import React from "react";
 import styled from "styled-components";
 import { Checkbox } from "../common/Checkbox";
 import { VerticalLine } from "./../common/VerticalLine";
+import { itemSortingOptionType } from "./../../types/itemSortingOptionType";
 
-export const ItemSortingBox = () => {
+interface ItemSortingBoxProps {
+  itemSortingOptionState: itemSortingOptionType;
+  handleUniverseChange: (newUniverseOption: boolean) => void;
+  handleHouseTypeChange: (newHouseType: boolean) => void;
+}
+
+export const ItemSortingBox = ({
+  itemSortingOptionState,
+  handleUniverseChange,
+  handleHouseTypeChange,
+}: ItemSortingBoxProps) => {
   return (
     <ItemSortingBoxLayout>
       <SortingOption>
@@ -12,8 +23,16 @@ export const ItemSortingBox = () => {
         </SortingOptionTitleContainer>
         <VerticalLine />
         <CheckboxContainer>
-          <Checkbox title="University" />
-          <Checkbox title="House Type" />
+          <Checkbox
+            title="University"
+            onChecked={handleUniverseChange}
+            value={itemSortingOptionState.universe}
+          />
+          <Checkbox
+            title="House Type"
+            onChecked={handleHouseTypeChange}
+            value={itemSortingOptionState.houseType}
+          />
         </CheckboxContainer>
       </SortingOption>
     </ItemSortingBoxLayout>
