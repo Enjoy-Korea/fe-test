@@ -2,18 +2,20 @@ import React from "react";
 import styled from "styled-components";
 
 interface CheckboxProps {
+  value: boolean;
   title: string;
-  onChecked?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onChecked?: (checked: boolean) => void;
 }
 
-export const Checkbox = ({ title, onChecked }: CheckboxProps) => {
+export const Checkbox = ({ value, title, onChecked }: CheckboxProps) => {
   return (
     <CheckboxLayout>
       <Input
         id={title}
         type="checkbox"
-        onChange={onChecked ? (e) => onChecked(e) : undefined}
+        onChange={onChecked ? (e) => onChecked(e.target.checked) : undefined}
         value={title}
+        checked={value}
       />
       <CheckboxLabel htmlFor={title}>{title}</CheckboxLabel>
     </CheckboxLayout>
