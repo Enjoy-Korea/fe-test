@@ -40,7 +40,7 @@ export const ItemSortingBox = ({
 };
 
 const ItemSortingBoxLayout = styled.div`
-  width: 100%;
+  width: 80%;
   min-height: 10%;
 
   padding: 10px;
