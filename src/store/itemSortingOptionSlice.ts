@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import { itemSortingOptionType } from "./../types/itemSortingOptionType";
 
 const itemSortingOptionInitialState: itemSortingOptionType = {
-  universe: false,
+  university: false,
   houseType: false,
 };
 
@@ -13,7 +13,7 @@ export const itemSortingOptionSlice = createSlice({
     resetItemSortingOptionState() {
       return { ...itemSortingOptionInitialState };
     },
-    setUniverse(state, action) {
+    setUniversity(state, action) {
       return { ...state, universe: action.payload };
     },
     setHouseType(state, action) {

@@ -1,4 +1,4 @@
 export interface itemSortingOptionType {
-  universe: boolean;
+  university: boolean;
   houseType: boolean;
 }

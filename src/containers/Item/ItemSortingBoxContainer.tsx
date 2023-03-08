@@ -10,10 +10,10 @@ export const ItemSortingBoxContainer = () => {
 
   const dispatch = useAppDispatch();
 
-  const { setUniverse, setHouseType } = itemSortingOptionSlice.actions;
+  const { setUniversity, setHouseType } = itemSortingOptionSlice.actions;
 
-  const handleUniverseChange = (newUniverseOption: boolean) => {
-    dispatch(setUniverse(newUniverseOption));
+  const handleUniversityChange = (newUuniversityOption: boolean) => {
+    dispatch(setUniversity(newUuniversityOption));
   };
 
   const handleHouseTypeChange = (newHouseTypeOption: boolean) => {
@@ -23,7 +23,7 @@ export const ItemSortingBoxContainer = () => {
   return (
     <ItemSortingBox
       itemSortingOptionState={itemSortingOptionState}
-      handleUniverseChange={handleUniverseChange}
+      handleUniversityChange={handleUniversityChange}
       handleHouseTypeChange={handleHouseTypeChange}
     ></ItemSortingBox>
   );

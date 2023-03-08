@@ -6,13 +6,13 @@ import { itemSortingOptionType } from "./../../types/itemSortingOptionType";
 
 interface ItemSortingBoxProps {
   itemSortingOptionState: itemSortingOptionType;
-  handleUniverseChange: (newUniverseOption: boolean) => void;
+  handleUniversityChange: (newUuniversityOption: boolean) => void;
   handleHouseTypeChange: (newHouseType: boolean) => void;
 }
 
 export const ItemSortingBox = ({
   itemSortingOptionState,
-  handleUniverseChange,
+  handleUniversityChange,
   handleHouseTypeChange,
 }: ItemSortingBoxProps) => {
   return (
@@ -24,9 +24,9 @@ export const ItemSortingBox = ({
         <VerticalLine />
         <CheckboxContainer>
           <Checkbox
-            title="University"
-            onChecked={handleUniverseChange}
-            value={itemSortingOptionState.universe}
+            title="Uuniversity"
+            onChecked={handleUniversityChange}
+            value={itemSortingOptionState.university}
           />
           <Checkbox
             title="House Type"
