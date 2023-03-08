@@ -21,7 +21,7 @@ export const ItemSortingBox = ({
         <SortingOptionTitleContainer>
           <SortingOptionTitle>Sort By</SortingOptionTitle>
         </SortingOptionTitleContainer>
-        <VerticalLine />
+        <VerticalLine height={80} />
         <CheckboxContainer>
           <Checkbox
             title="University"
