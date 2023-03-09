@@ -26,6 +26,9 @@ export const ListItemDetailPage = () => {
 
       <SectionTitle title="대학" />
       <University>{house.university}</University>
+
+      <SectionTitle title="주거 형태" />
+      <University>{house.houseType}</University>
     </ListItemDetailPageLayout>
   );
 };
