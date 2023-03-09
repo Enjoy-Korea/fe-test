@@ -5,6 +5,7 @@ import { Item } from "./Item";
 import { IItem, IItemSortingOptionState } from "../../interfaces/itemInterface";
 import { ITEM_SORTING_OPTIONS } from "../../constants/itemSortingOptions";
 import { sortItem } from "./../../utils/sortItem";
+import { HorizontalLine } from "./../common/HorizontalLine";
 
 interface ItemListProps {
   itemSortingOptionState: IItemSortingOptionState;
@@ -31,15 +32,18 @@ export const ItemList = ({ itemSortingOptionState }: ItemListProps) => {
 
   return (
     <ItemListLayout>
-      {itemList.map((item) => (
-        <Item item={item} />
+      {itemList.map((item, index) => (
+        <>
+          <Item item={item} />
+          {itemList.length - 1 !== index && <HorizontalLine />}
+        </>
       ))}
     </ItemListLayout>
   );
 };
 
 const ItemListLayout = styled.div`
-  width: 100%;
+  width: 80%;
   height: 100%;
 
   margin-top: 30px;
@@ -47,4 +51,6 @@ const ItemListLayout = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  background-color: #fefefe;
 `;
