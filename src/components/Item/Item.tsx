@@ -1,10 +1,10 @@
 import React from "react";
 import styled from "styled-components";
-import { itemType } from "./../../types/itemType";
 import { Link } from "react-router-dom";
+import { IItem } from "../../interfaces/itemInterface";
 
 interface ItemProps {
-  item: itemType;
+  item: IItem;
 }
 
 export const Item = ({ item }: ItemProps) => {
