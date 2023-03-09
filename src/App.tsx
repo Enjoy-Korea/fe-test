@@ -20,8 +20,6 @@ const AppLayout = styled.div`
   display: flex;
   justify-content: center;
   align-items: flex-start;
-
-  background-color: rgba(0, 0, 0, 0.05);
 `;
 
 export default App;
