@@ -1,34 +1,28 @@
 import React, { useMemo } from "react";
-import { itemType } from "../../types/itemType";
 import houseData from "../../data/houses.mock.json";
 import styled from "styled-components";
-import { itemSortingOptionType } from "./../../types/itemSortingOptionType";
 import { Item } from "./Item";
+import { IItem, IItemSortingOptionState } from "../../interfaces/itemInterface";
+import { ITEM_SORTING_OPTIONS } from "../../constants/itemSortingOptions";
+import { sortItem } from "./../../utils/sortItem";
 
 interface ItemListProps {
-  itemSortingOptionState: itemSortingOptionType;
+  itemSortingOptionState: IItemSortingOptionState;
 }
 
 export const ItemList = ({ itemSortingOptionState }: ItemListProps) => {
-  const itemList = useMemo<itemType[]>(() => {
+  const itemList = useMemo<IItem[]>(() => {
     const copiedHouseData = [...houseData];
 
     for (const [sortingOption, isChecked] of Object.entries(
       itemSortingOptionState
     )) {
-      if (
-        (isChecked && sortingOption === "university") ||
-        (isChecked && sortingOption === "houseType")
-      ) {
-        copiedHouseData.sort((a, b) => {
-          if (a[sortingOption] > b[sortingOption]) {
-            return 1;
-          } else if (a[sortingOption] < b[sortingOption]) {
-            return -1;
-          } else {
-            return 0;
-          }
-        });
+      if (isChecked) {
+        if (sortingOption === ITEM_SORTING_OPTIONS.UNIVERSITY) {
+          sortItem(copiedHouseData, sortingOption, true);
+        } else if (sortingOption === ITEM_SORTING_OPTIONS.HOUSETYPE) {
+          sortItem(copiedHouseData, sortingOption, true);
+        }
       }
     }
 
