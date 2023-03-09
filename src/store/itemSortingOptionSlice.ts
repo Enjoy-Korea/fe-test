@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { itemSortingOptionType } from "./../types/itemSortingOptionType";
+import { IItemSortingOptionState } from "../interfaces/itemInterface";
 
-const itemSortingOptionInitialState: itemSortingOptionType = {
+const itemSortingOptionInitialState: IItemSortingOptionState = {
   university: false,
   houseType: false,
 };
