@@ -1,11 +1,11 @@
 import React from "react";
 import styled from "styled-components";
+import { IItemSortingOptionState } from "../../interfaces/itemInterface";
 import { Checkbox } from "../common/Checkbox";
 import { VerticalLine } from "./../common/VerticalLine";
-import { itemSortingOptionType } from "./../../types/itemSortingOptionType";
 
 interface ItemSortingBoxProps {
-  itemSortingOptionState: itemSortingOptionType;
+  itemSortingOptionState: IItemSortingOptionState;
   handleUniversityChange: (newUniversityOption: boolean) => void;
   handleHouseTypeChange: (newHouseType: boolean) => void;
 }
