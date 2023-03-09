@@ -2,7 +2,6 @@ import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { IItem } from "../../interfaces/itemInterface";
-import { VerticalLine } from "../common/VerticalLine";
 
 interface ItemProps {
   item: IItem;
@@ -88,7 +87,7 @@ const RightSection = styled.div`
   align-items: flex-start;
   justify-content: space-around;
 
-  padding: 10px 0px 30px 0px;
+  padding: 0px 50px 0px 10px;
 `;
 
 const ItemDescription = styled.p`
