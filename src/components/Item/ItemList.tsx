@@ -3,7 +3,7 @@ import { itemType } from "../../types/itemType";
 import houseData from "../../data/houses.mock.json";
 import styled from "styled-components";
 import { itemSortingOptionType } from "./../../types/itemSortingOptionType";
-import { Link } from "react-router-dom";
+import { Item } from "./Item";
 
 interface ItemListProps {
   itemSortingOptionState: itemSortingOptionType;
@@ -38,7 +38,7 @@ export const ItemList = ({ itemSortingOptionState }: ItemListProps) => {
   return (
     <ItemListLayout>
       {itemList.map((item) => (
-        <ItemLink to={`house/${item.id}`}>{item.name}</ItemLink>
+        <Item item={item} />
       ))}
     </ItemListLayout>
   );
@@ -53,25 +53,4 @@ const ItemListLayout = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-`;
-
-const ItemLink = styled(Link)`
-  width: 80%;
-  height: 200px;
-
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-
-  border: 2px solid rgb(255, 184, 1);
-  border-radius: 10px;
-
-  margin: 10px;
-  padding: 20px;
-
-  background-color: #fefefe;
-
-  &:hover {
-    opacity: 0.7;
-  }
 `;
