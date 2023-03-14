@@ -5,7 +5,7 @@ import housesInfo from "../../data/houses.mock.json";
 const MainList = () => {
   const houseInfo = housesInfo;
 
-  console.log(typeof houseInfo[6].images[0].url);
+  console.log(houseInfo);
 
   console.log(houseInfo);
   return (

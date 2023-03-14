@@ -12,8 +12,8 @@ const ItemBox = ({ houseInfo }: { houseInfo: HouseInfo }) => {
   };
 
   return (
-    <S.Wrapper>
-      <Link to={`/item/${houseInfo.id}`}>
+    <Link to={`/item/${houseInfo.id}`}>
+      <S.Wrapper>
         <S.ImageContainer>
           {imageError ? (
             <img src={enkorpic} alt="house" />
@@ -33,8 +33,8 @@ const ItemBox = ({ houseInfo }: { houseInfo: HouseInfo }) => {
             <span>{houseInfo.university}</span>
           </S.TagContainer>
         </S.InfoContainer>
-      </Link>
-    </S.Wrapper>
+      </S.Wrapper>
+    </Link>
   );
 };
 
