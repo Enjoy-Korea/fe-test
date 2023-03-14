@@ -1,6 +1,6 @@
-const ItemDetail = () => {
+const ItemDetailPage = () => {
   return <>ItemDetail</>;
 };
 
-export default ItemDetail;
+export default ItemDetailPage;
 export {};
