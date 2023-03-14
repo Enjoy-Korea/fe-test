@@ -1,14 +1,19 @@
-import Header from "../Header";
-import Nav from "../Nav";
-import Search from "../Search";
+import ItemBox from "../ItemBox";
 import * as S from "./style";
+import housesInfo from "../../data/houses.mock.json";
 
 const MainList = () => {
+  const houseInfo = housesInfo;
+
+  console.log(typeof houseInfo[6].images[0].url);
+
+  console.log(houseInfo);
   return (
     <S.Wrapper>
-      <Header />
-      <Nav />
-      <Search />
+      <span> {houseInfo.length} Houses Available</span>
+      {houseInfo.map((house) => (
+        <ItemBox key={house.id} houseInfo={house} />
+      ))}
     </S.Wrapper>
   );
 };

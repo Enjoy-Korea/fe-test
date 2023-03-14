@@ -6,7 +6,6 @@ export const Wrapper = styled.div`
 
 export const LogoContainer = styled.div`
   img {
-    padding: 10px 0 20px 2em;
     width: 200px;
   }
 `;

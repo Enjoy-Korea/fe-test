@@ -1,9 +1,8 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
-  width: 100vw;
-  padding-left: 2.5em;
-  padding-right: 2.5em;
+  width: 100%;
+  box-sizing: border-box;
 
   h2 {
     margin: 20px 0 20px 0;
@@ -36,4 +35,5 @@ export const Bar = styled.div`
   width: 100%;
   height: 1px;
   background-color: var(--gray-font);
+  margin-bottom: 20px;
 `;

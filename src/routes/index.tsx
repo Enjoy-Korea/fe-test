@@ -1,11 +1,11 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import MainList from "../components/MainList";
+import MainListPage from "../pages/MainListPage";
 
 export default function Router() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<MainList />} />
+        <Route path="/" element={<MainListPage />} />
       </Routes>
     </BrowserRouter>
   );
