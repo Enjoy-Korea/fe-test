@@ -1,17 +1,14 @@
+import { HouseInfo } from "../../types";
 import ItemBox from "../ItemBox";
 import * as S from "./style";
-import housesInfo from "../../data/houses.mock.json";
 
-const MainList = () => {
-  const houseInfo = housesInfo;
+const MainList = ({ filteredHouses }: any) => {
+  console.log(filteredHouses);
 
-  console.log(houseInfo);
-
-  console.log(houseInfo);
   return (
     <S.Wrapper>
-      <span> {houseInfo.length} Houses Available</span>
-      {houseInfo.map((house) => (
+      <span> {filteredHouses.length} Houses Available</span>
+      {filteredHouses.map((house: HouseInfo) => (
         <ItemBox key={house.id} houseInfo={house} />
       ))}
     </S.Wrapper>
