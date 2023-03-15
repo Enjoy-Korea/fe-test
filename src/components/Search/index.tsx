@@ -17,8 +17,12 @@ const Search = ({
       house.university.includes(searchValue)
     );
     handleSearch(filteredHouses);
-    setSearchValue("");
     navigate(`/?university=${searchValue}`);
+    setSearchValue("");
+  };
+
+  const onFocus = () => {
+    setSearchValue("");
   };
 
   return (
@@ -31,6 +35,7 @@ const Search = ({
           value={searchValue}
           placeholder="Search by university..."
           onChange={(e) => setSearchValue(e.target.value)}
+          onFocus={onFocus}
           onKeyPress={keyPressHandler}
         ></input>
         <button>Search</button>

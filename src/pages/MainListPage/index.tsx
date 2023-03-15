@@ -76,6 +76,7 @@ const MainListPage = () => {
       const encodedValue = encodeURIComponent(searchValue);
       const encodedType = encodeURIComponent(selectedHouseType);
       window.location.href = `/?university=${encodedValue}&houseType=${encodedType}`;
+      setSearchValue("");
     }
   };
 
