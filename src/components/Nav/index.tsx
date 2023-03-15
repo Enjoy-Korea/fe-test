@@ -1,10 +1,12 @@
 import * as S from "./style";
+import { useNavigate } from "react-router-dom";
 
 const Nav = () => {
+  const navigate = useNavigate();
   return (
     <S.Wrapper>
       <S.LeftMenu>
-        <span>Find Stay</span>
+        <span onClick={() => navigate("/")}>Find Stay</span>
       </S.LeftMenu>
       <S.RightMenu>
         <li>Activity</li>
