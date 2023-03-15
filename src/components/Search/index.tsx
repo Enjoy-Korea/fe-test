@@ -2,13 +2,14 @@ import * as S from "./style";
 
 import { useNavigate } from "react-router-dom";
 import housesInfo from "../../data/houses.mock.json";
+import { SearchProps } from "../../types";
 
 const Search = ({
   handleSearch,
   searchValue,
   setSearchValue,
   keyPressHandler,
-}: any) => {
+}: SearchProps) => {
   const navigate = useNavigate();
 
   const onSearchChange = (event: React.FormEvent<HTMLFormElement>) => {
@@ -17,8 +18,12 @@ const Search = ({
       house.university.includes(searchValue)
     );
     handleSearch(filteredHouses);
+    navigate(`/?university=${searchValue}`);
     setSearchValue("");
-    navigate(`/search?university=${searchValue}`);
+  };
+
+  const onFocus = () => {
+    setSearchValue("");
   };
 
   return (
@@ -31,6 +36,7 @@ const Search = ({
           value={searchValue}
           placeholder="Search by university..."
           onChange={(e) => setSearchValue(e.target.value)}
+          onFocus={onFocus}
           onKeyPress={keyPressHandler}
         ></input>
         <button>Search</button>

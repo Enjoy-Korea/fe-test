@@ -32,6 +32,7 @@ export const ImageContainer = styled.div`
 export const InfoContainer = styled.div`
   h5 {
     color: var(--gray-font);
+    text-decoration: none;
   }
 `;
 
