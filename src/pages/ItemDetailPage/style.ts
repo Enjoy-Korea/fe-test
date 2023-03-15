@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Wrapper = styled.div`
   width: 100vw;
-  padding: 0 2.5em 2.5em 2.5em;
+  padding: 1em 2.5em 2.5em 2.5em;
   box-sizing: border-box;
 `;
 
