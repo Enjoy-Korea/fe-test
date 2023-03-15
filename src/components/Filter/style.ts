@@ -1,10 +1,11 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
+  height: 100%;
   display: grid;
-  grid-template-rows: 5% 5% 5% auto;
+  grid-template-rows: 60px 30px 25px;
+  align-items: flex-start;
   margin-bottom: 20px;
-
   @media (max-width: 959px) {
     grid-template-columns: repeat(3, 1fr);
     align-items: center;
