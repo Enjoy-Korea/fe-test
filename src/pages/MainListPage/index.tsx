@@ -73,9 +73,9 @@ const MainListPage = () => {
 
   const keyPressHandler = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.key === "Enter") {
-      setSearchValue("");
       const encodedValue = encodeURIComponent(searchValue);
-      window.location.href = `/?university=${encodedValue}`;
+      const encodedType = encodeURIComponent(selectedHouseType);
+      window.location.href = `/?university=${encodedValue}&houseType=${encodedType}`;
     }
   };
 
