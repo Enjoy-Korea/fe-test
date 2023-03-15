@@ -31,6 +31,7 @@ select {
   outline: none;
 }
 
+
   @media (max-width: 959px) {
     h2 {
       font-size: 1.3rem;

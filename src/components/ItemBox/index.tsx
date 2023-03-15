@@ -12,8 +12,8 @@ const ItemBox = ({ houseInfo }: { houseInfo: HouseInfo }) => {
   };
 
   return (
-    <Link to={`/item/${houseInfo.id}`}>
-      <S.Wrapper>
+    <S.Wrapper>
+      <Link to={`/item/${houseInfo.id}`} className="no-underline">
         <S.ImageContainer>
           {imageError ? (
             <img src={enkorpic} alt="house" />
@@ -25,16 +25,17 @@ const ItemBox = ({ houseInfo }: { houseInfo: HouseInfo }) => {
             />
           )}
         </S.ImageContainer>
-        <S.InfoContainer>
-          <h4>{houseInfo.name}</h4>
-          <h5>{houseInfo.address}</h5>
-          <S.TagContainer>
-            <span>{houseInfo.houseType}</span>
-            <span>{houseInfo.university}</span>
-          </S.TagContainer>
-        </S.InfoContainer>
-      </S.Wrapper>
-    </Link>
+      </Link>
+      <S.InfoContainer>
+        <h3>안녕?</h3>
+        <h4>{houseInfo.name}</h4>
+        <h5>{houseInfo.address}</h5>
+        <S.TagContainer>
+          <span>{houseInfo.houseType}</span>
+          <span>{houseInfo.university}</span>
+        </S.TagContainer>
+      </S.InfoContainer>
+    </S.Wrapper>
   );
 };
 
