@@ -7,5 +7,6 @@ export const Wrapper = styled.div`
 export const LogoContainer = styled.div`
   img {
     width: 200px;
+    cursor: pointer;
   }
 `;

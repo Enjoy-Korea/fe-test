@@ -14,8 +14,10 @@ const MainListPage = () => {
   const location = useLocation();
   const [filtered, setFiltered] = useState<HouseInfo[]>(housesInfo);
   const [searchValue, setSearchValue] = useState("");
+  const [selectedHouseType, setSelectedHouseType] = useState("");
 
   const handleSearch = (filteredHouses: HouseInfo[]) => {
+    setSelectedHouseType(selectedHouseType);
     setFiltered(filteredHouses);
   };
   console.log(filtered);
@@ -26,14 +28,35 @@ const MainListPage = () => {
     const university = params.get("university");
     if (university) {
       setSearchValue(university);
-      const filteredHouses = housesInfo.filter((house) =>
-        house.university.includes(university)
+      const filteredHouses = housesInfo.filter(
+        (house) =>
+          house.university.includes(university) &&
+          (selectedHouseType === "" || house.houseType === selectedHouseType)
       );
       setFiltered(filteredHouses);
     } else {
       setFiltered(housesInfo);
     }
-  }, [location.search]);
+  }, [location.search, selectedHouseType]);
+
+  const handleHouseTypeChange = (
+    event: React.ChangeEvent<HTMLSelectElement>
+  ) => {
+    const selectedType = event.target.value;
+    setSelectedHouseType(selectedType);
+    const encodedType = encodeURIComponent(selectedType);
+    window.history.replaceState(
+      {},
+      "",
+      `?university=${searchValue}&houseType=${encodedType}`
+    );
+    const filteredHouses = housesInfo.filter(
+      (house) =>
+        house.university.includes(searchValue) &&
+        house.houseType === selectedType
+    );
+    setFiltered(filteredHouses);
+  };
 
   const keyPressHandler = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.key === "Enter") {
@@ -54,7 +77,11 @@ const MainListPage = () => {
         keyPressHandler={keyPressHandler}
       />
       <S.Main>
-        <Filter />
+        <Filter
+          houseInfo={housesInfo}
+          selectedHouseType={selectedHouseType}
+          handleHouseTypeChange={handleHouseTypeChange}
+        />
         <MainList filteredHouses={filtered} />
       </S.Main>
     </S.Wrapper>
