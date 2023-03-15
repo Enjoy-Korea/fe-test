@@ -18,7 +18,7 @@ const Search = ({
     );
     handleSearch(filteredHouses);
     setSearchValue("");
-    navigate(`/search?university=${searchValue}`);
+    navigate(`/?university=${searchValue}`);
   };
 
   return (

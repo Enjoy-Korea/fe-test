@@ -8,7 +8,6 @@ export const Wrapper = styled.div`
 `;
 
 export const Main = styled.div`
-  height: 100%;
   display: grid;
   grid-template-columns: 30% 70%;
 

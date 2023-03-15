@@ -17,27 +17,40 @@ const MainListPage = () => {
   const [selectedHouseType, setSelectedHouseType] = useState("");
 
   const handleSearch = (filteredHouses: HouseInfo[]) => {
-    setSelectedHouseType(selectedHouseType);
     setFiltered(filteredHouses);
+    if (selectedHouseType !== "") {
+      const encodedType = encodeURIComponent(selectedHouseType);
+      window.history.replaceState(
+        {},
+        "",
+        `?university=${searchValue}&houseType=${encodedType}`
+      );
+    }
   };
-  console.log(filtered);
 
   useEffect(() => {
     const params = new URLSearchParams(location.search);
 
     const university = params.get("university");
+    const houseType = params.get("houseType");
+
+    if (houseType) {
+      setSelectedHouseType(decodeURIComponent(houseType));
+    }
+
     if (university) {
       setSearchValue(university);
       const filteredHouses = housesInfo.filter(
         (house) =>
           house.university.includes(university) &&
-          (selectedHouseType === "" || house.houseType === selectedHouseType)
+          (houseType === null ||
+            house.houseType === decodeURIComponent(houseType))
       );
       setFiltered(filteredHouses);
     } else {
       setFiltered(housesInfo);
     }
-  }, [location.search, selectedHouseType]);
+  }, [location.search]);
 
   const handleHouseTypeChange = (
     event: React.ChangeEvent<HTMLSelectElement>
@@ -53,7 +66,7 @@ const MainListPage = () => {
     const filteredHouses = housesInfo.filter(
       (house) =>
         house.university.includes(searchValue) &&
-        house.houseType === selectedType
+        (selectedType === "" || house.houseType === selectedType)
     );
     setFiltered(filteredHouses);
   };
