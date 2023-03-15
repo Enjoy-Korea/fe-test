@@ -2,13 +2,14 @@ import * as S from "./style";
 
 import { useNavigate } from "react-router-dom";
 import housesInfo from "../../data/houses.mock.json";
+import { SearchProps } from "../../types";
 
 const Search = ({
   handleSearch,
   searchValue,
   setSearchValue,
   keyPressHandler,
-}: any) => {
+}: SearchProps) => {
   const navigate = useNavigate();
 
   const onSearchChange = (event: React.FormEvent<HTMLFormElement>) => {

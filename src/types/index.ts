@@ -1,3 +1,5 @@
+import { Dispatch, SetStateAction } from "react";
+
 export type HouseInfo = {
   id: number;
   name: string;
@@ -10,3 +12,10 @@ export type HouseInfo = {
     key: number;
   }[];
 };
+
+export interface SearchProps {
+  handleSearch: (filteredHouses: HouseInfo[]) => void;
+  searchValue: string;
+  setSearchValue: Dispatch<SetStateAction<string>>;
+  keyPressHandler: (event: React.KeyboardEvent<HTMLInputElement>) => void;
+}
