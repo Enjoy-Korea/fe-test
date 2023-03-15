@@ -57,6 +57,7 @@ const MainListPage = () => {
   ) => {
     const selectedType = event.target.value;
     setSelectedHouseType(selectedType);
+
     const encodedType = encodeURIComponent(selectedType);
     window.history.replaceState(
       {},

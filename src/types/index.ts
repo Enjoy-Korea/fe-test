@@ -19,3 +19,9 @@ export interface SearchProps {
   setSearchValue: Dispatch<SetStateAction<string>>;
   keyPressHandler: (event: React.KeyboardEvent<HTMLInputElement>) => void;
 }
+
+export interface FilterProps {
+  houseInfo: HouseInfo[];
+  selectedHouseType: string;
+  handleHouseTypeChange: (event: React.ChangeEvent<HTMLSelectElement>) => void;
+}
