@@ -25,6 +25,20 @@ button {
   margin: 0;
   background-color: #fff;
 }
+
+select {
+  cursor: pointer;
+  outline: none;
+}
+
+  @media (max-width: 959px) {
+    h2 {
+      font-size: 1.3rem;
+    }
+    h3 {
+      font-size: 1rem;
+    }
+  }
   
   /* Global styles */
   body {

@@ -17,7 +17,7 @@ export const Form = styled.form`
   margin-bottom: 20px;
   input {
     border: 1px solid var(--gray-font);
-    width: 85%;
+    width: 80%;
     height: 50px;
     border-radius: 10px;
     padding: 16px;
@@ -25,9 +25,12 @@ export const Form = styled.form`
 
   button {
     border: 1px solid var(--yellow);
-    width: 10%;
+    width: 15%;
     height: 50px;
     border-radius: 10px;
+    @media (max-width: 959px) {
+      font-size: 0.7rem;
+    }
   }
 `;
 
