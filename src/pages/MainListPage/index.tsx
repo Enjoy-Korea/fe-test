@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
-
 import Filter from "../../components/Filter";
 import Header from "../../components/Header";
 import MainList from "../../components/MainList";
@@ -9,7 +8,6 @@ import Search from "../../components/Search";
 import { HouseInfo } from "../../types";
 import * as S from "./style";
 import housesInfo from "../../data/houses.mock.json";
-
 const MainListPage = () => {
   const location = useLocation();
   const [filtered, setFiltered] = useState<HouseInfo[]>(housesInfo);
@@ -57,7 +55,6 @@ const MainListPage = () => {
   ) => {
     const selectedType = event.target.value;
     setSelectedHouseType(selectedType);
-
     const encodedType = encodeURIComponent(selectedType);
     window.history.replaceState(
       {},
@@ -71,16 +68,14 @@ const MainListPage = () => {
     );
     setFiltered(filteredHouses);
   };
-
   const keyPressHandler = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.key === "Enter") {
+      setSearchValue("");
       const encodedValue = encodeURIComponent(searchValue);
       const encodedType = encodeURIComponent(selectedHouseType);
       window.location.href = `/?university=${encodedValue}&houseType=${encodedType}`;
-      setSearchValue("");
     }
   };
-
   return (
     <S.Wrapper>
       <Header />
@@ -102,5 +97,4 @@ const MainListPage = () => {
     </S.Wrapper>
   );
 };
-
 export default MainListPage;

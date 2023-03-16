@@ -27,7 +27,6 @@ const ItemBox = ({ houseInfo }: { houseInfo: HouseInfo }) => {
         </S.ImageContainer>
       </Link>
       <S.InfoContainer>
-        <h3>안녕?</h3>
         <h4>{houseInfo.name}</h4>
         <h5>{houseInfo.address}</h5>
         <S.TagContainer>

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Wrapper = styled.div`
+export const Wrapper = styled.nav`
   width: 100%;
   display: grid;
   grid-template-columns: 10% 30% auto;
