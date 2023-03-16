@@ -2,9 +2,7 @@ import { HouseInfo } from "../../types";
 import ItemBox from "../ItemBox";
 import * as S from "./style";
 
-const MainList = ({ filteredHouses }: any) => {
-  console.log(filteredHouses);
-
+const MainList = ({ filteredHouses }: { filteredHouses: HouseInfo[] }) => {
   return (
     <S.Wrapper>
       <span> {filteredHouses.length} Houses Available</span>

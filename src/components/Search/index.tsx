@@ -2,8 +2,15 @@ import * as S from "./style";
 
 import { useNavigate } from "react-router-dom";
 import housesInfo from "../../data/houses.mock.json";
-import { SearchProps } from "../../types";
-import React from "react";
+import { HouseInfo } from "../../types";
+import { Dispatch, SetStateAction } from "react";
+
+interface SearchProps {
+  handleSearch: (filteredHouses: HouseInfo[]) => void;
+  searchValue: string;
+  setSearchValue: Dispatch<SetStateAction<string>>;
+  keyPressHandler: (event: React.KeyboardEvent<HTMLInputElement>) => void;
+}
 
 const Search = ({
   handleSearch,

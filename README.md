@@ -1,5 +1,23 @@
 # Welcome to enkor Frontend skill assessment
 
+---
+
+### 구현 내용
+
+- Main List Page와 Item Detail Page 구현 및 동적 라우팅 구현
+- Sorting (university, houseType) 기능 구현
+- ENKOR STAY 사이트 디자인 클론
+- 반응형 화면 구현
+
+### 아쉬운 점
+
+- 테스트 코드 작성하지 못한 점
+- sorting 로직으로 인해 복잡하게 구현된 MainListPage 코드 리팩토링
+- `useNavigate`로 처리하고 싶었으나 초기세팅과 관련한 문제로 `window.history`로 처리함
+- eslint, prettier 로 작업하지 못한 점
+
+---
+
 ### 다음의 요구사항들을 충족시켜서 구현해주시면 됩니다.
 
 구현해주실 페이지는 다음과 같습니다.

@@ -1,5 +1,11 @@
-import { FilterProps, HouseInfo } from "../../types";
+import { HouseInfo } from "../../types";
 import * as S from "./style";
+
+interface FilterProps {
+  houseInfo: HouseInfo[];
+  selectedHouseType: string;
+  handleHouseTypeChange: (event: React.ChangeEvent<HTMLSelectElement>) => void;
+}
 
 const Filter = ({
   houseInfo,
@@ -10,15 +16,6 @@ const Filter = ({
     new Set(houseInfo.map((house: HouseInfo) => house.houseType))
   );
 
-  // ["All Items"].concat(
-  //   Array.from(new Set(houseInfo.map((house: HouseInfo) => house.houseType)))
-  // );
-  // Array.from(
-  //   new Set([
-  //     "All items",
-  //     ...houseInfo.map((house: HouseInfo) => house.houseType),
-  //   ])
-  // );
   return (
     <S.Wrapper>
       <h2>Filters</h2>
@@ -26,7 +23,7 @@ const Filter = ({
       <S.Container>
         <select value={selectedHouseType} onChange={handleHouseTypeChange}>
           {houseTypes.map((type: string) => (
-            <option>{type}</option>
+            <option key={type}>{type}</option>
           ))}
         </select>
       </S.Container>
