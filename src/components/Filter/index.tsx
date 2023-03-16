@@ -9,6 +9,16 @@ const Filter = ({
   const houseTypes: string[] = Array.from(
     new Set(houseInfo.map((house: HouseInfo) => house.houseType))
   );
+
+  // ["All Items"].concat(
+  //   Array.from(new Set(houseInfo.map((house: HouseInfo) => house.houseType)))
+  // );
+  // Array.from(
+  //   new Set([
+  //     "All items",
+  //     ...houseInfo.map((house: HouseInfo) => house.houseType),
+  //   ])
+  // );
   return (
     <S.Wrapper>
       <h2>Filters</h2>

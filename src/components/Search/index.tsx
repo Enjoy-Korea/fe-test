@@ -3,6 +3,7 @@ import * as S from "./style";
 import { useNavigate } from "react-router-dom";
 import housesInfo from "../../data/houses.mock.json";
 import { SearchProps } from "../../types";
+import React from "react";
 
 const Search = ({
   handleSearch,
@@ -18,8 +19,8 @@ const Search = ({
       house.university.includes(searchValue)
     );
     handleSearch(filteredHouses);
-    navigate(`/?university=${searchValue}`);
     setSearchValue("");
+    navigate(`/?university=${searchValue}`);
   };
 
   const onFocus = () => {
