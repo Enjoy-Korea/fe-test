@@ -72,8 +72,7 @@ const MainListPage = () => {
     if (event.key === "Enter") {
       setSearchValue("");
       const encodedValue = encodeURIComponent(searchValue);
-      const encodedType = encodeURIComponent(selectedHouseType);
-      window.location.href = `/?university=${encodedValue}&houseType=${encodedType}`;
+      window.location.href = `/?university=${encodedValue}`;
     }
   };
   return (
