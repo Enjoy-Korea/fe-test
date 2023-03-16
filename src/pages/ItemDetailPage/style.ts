@@ -23,7 +23,9 @@ export const ImgContainer = styled.div`
   display: flex;
   justify-content: center;
   img {
-    width: 50%;
+    width: 40%;
+    margin-top: 30px;
+    margin-right: 5px;
   }
 `;
 
