@@ -4,7 +4,6 @@ export const Wrapper = styled.div`
   display: grid;
   margin-top: 20px;
   grid-template-columns: 30% 70%;
-  cursor: pointer;
   @media (max-width: 959px) {
     grid-template-columns: 1fr;
   }
@@ -15,6 +14,7 @@ export const ImageContainer = styled.div`
     width: 250px;
     height: 200px;
     border-radius: 15px;
+    cursor: pointer;
     @media (max-width: 1300px) {
       width: 150px;
       height: 100px;
